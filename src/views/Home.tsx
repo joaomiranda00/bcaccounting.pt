@@ -557,75 +557,91 @@ const ProcessSection = () => {
     {
       number: '01',
       title: 'Diagnóstico Inicial',
-      description: 'Analisamos a situação atual da sua empresa para identificar necessidades e oportunidades.',
+      description:
+        'Analisamos a realidade contabilística, fiscal e de gestão da sua empresa para identificar prioridades e necessidades.',
       icon: Users,
     },
     {
       number: '02',
       title: 'Proposta Personalizada',
-      description: 'Apresentamos soluções adequadas às suas necessidades específicas e objetivos.',
+      description:
+        'Definimos uma proposta de trabalho ajustada à operação, aos objetivos e às obrigações do seu negócio.',
       icon: Award,
     },
     {
       number: '03',
       title: 'Implementação',
-      description: 'Colocamos em prática as estratégias definidas com profissionalismo e eficiência.',
+      description:
+        'Colocamos em prática os procedimentos acordados com rigor, proximidade e foco na organização da empresa.',
       icon: Clock,
     },
     {
       number: '04',
       title: 'Acompanhamento Contínuo',
-      description: 'Mantemos apoio regular e ajustes necessários para garantir resultados.',
+      description:
+        'Mantemos apoio regular para responder a mudanças, cumprir prazos e apoiar decisões com maior segurança.',
       icon: CheckCircle,
     },
   ];
 
   return (
     <section ref={sectionRef} className="py-24 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          <span className="inline-flex items-center rounded-full border border-[#C1272D]/15 bg-[#C1272D]/5 px-4 py-2 text-sm font-medium text-[#C1272D] mb-5">
+            Processo de trabalho
+          </span>
           <h2 className="section-title">O Nosso Processo</h2>
           <p className="section-subtitle">
-            Um método estruturado para garantir o sucesso do seu projeto
+            Um método claro e acompanhado para organizar o trabalho e dar resposta
+            às necessidades da sua empresa em cada etapa.
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative mx-auto max-w-5xl">
           {/* Timeline Line */}
-          <div className="timeline-line absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#C1272D] to-transparent origin-top hidden md:block" />
+          <div className="timeline-line absolute bottom-0 left-6 top-0 w-px origin-top bg-gradient-to-b from-[#C1272D]/70 via-[#C1272D]/25 to-transparent md:left-1/2 md:-translate-x-1/2" />
 
-          <div className="space-y-12">
+          <div className="space-y-8 md:space-y-10">
             {steps.map((step, index) => (
-              <div
+              <article
                 key={step.number}
-                className={`process-step relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${
-                  index % 2 === 1 ? 'md:text-right' : ''
-                }`}
+                className="process-step relative grid grid-cols-[48px_minmax(0,1fr)] gap-x-5 gap-y-4 md:grid-cols-[minmax(0,1fr)_88px_minmax(0,1fr)] md:gap-x-8 md:items-center"
               >
-                {/* Content */}
-                <div className={`${index % 2 === 1 ? 'md:order-2' : ''}`}>
-                  <div className="bg-white rounded-xl p-6 border border-[#E0E0E0] shadow-sm hover:shadow-lg transition-shadow duration-300">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 bg-[#C1272D] rounded-lg flex items-center justify-center animate-pulse-soft">
-                        <step.icon className="w-6 h-6 text-white" />
-                      </div>
-                      <span className="text-4xl font-bold text-[#C1272D]/20">
-                        {step.number}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-bold text-[#333] mb-2">{step.title}</h3>
-                    <p className="text-[#666] text-sm leading-relaxed">{step.description}</p>
+                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-[#C1272D]/15 bg-white shadow-sm md:col-start-2 md:mx-auto md:h-16 md:w-16">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C1272D] text-white md:h-12 md:w-12">
+                    <step.icon className="h-4 w-4 md:h-5 md:w-5" />
                   </div>
                 </div>
 
-                {/* Center Dot */}
-                <div className="hidden md:flex justify-center">
-                  <div className="w-4 h-4 bg-[#C1272D] rounded-full border-4 border-white shadow-lg z-10" />
+                <div
+                  className={`relative col-start-2 md:row-start-1 ${
+                    index % 2 === 0
+                      ? 'md:col-start-1 md:text-right'
+                      : 'md:col-start-3 md:text-left'
+                  }`}
+                >
+                  <div
+                    className={`hidden md:block absolute top-8 h-px w-10 bg-[#C1272D]/20 ${
+                      index % 2 === 0 ? 'right-[-2.75rem]' : 'left-[-2.75rem]'
+                    }`}
+                  />
+                  <div className="rounded-2xl border border-[#E0E0E0] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl md:p-7">
+                    <div
+                      className={`mb-4 flex items-center gap-4 ${
+                        index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                      }`}
+                    >
+                      <span className="text-sm font-semibold tracking-[0.22em] text-[#C1272D]">
+                        PASSO {step.number}
+                      </span>
+                      <div className="h-px flex-1 bg-[#E8D6D7]" />
+                    </div>
+                    <h3 className="text-xl font-bold text-[#333] mb-3">{step.title}</h3>
+                    <p className="text-[#666] leading-relaxed">{step.description}</p>
+                  </div>
                 </div>
-
-                {/* Empty Space for Alternating Layout */}
-                <div className={`hidden md:block ${index % 2 === 1 ? 'md:order-1' : ''}`} />
-              </div>
+              </article>
             ))}
           </div>
         </div>

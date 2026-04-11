@@ -2,6 +2,20 @@
 
 ## 2026-04-11
 
+### Refinamento Visual: Timeline do Processo na Homepage
+- Atualizado:
+  - `src/views/Home.tsx`
+  - `docs/seo/STATUS.md`
+  - `docs/seo/CHANGELOG.md`
+- Motivo:
+  - reforçar a clareza visual da secção `O Nosso Processo` sem redesenhar a homepage
+  - substituir a grelha linear por uma timeline zig-zag com eixo central em desktop
+  - manter responsividade simples e legível em tablet e mobile
+- Impacto esperado:
+  - leitura mais imediata da sequência do processo
+  - melhor ritmo visual na homepage
+  - reforço de perceção institucional e profissional sem excesso de ornamento
+
 ### Limpeza Técnica Pós-Migração Next.js
 - Removidos:
   - ficheiros legados da stack React/Vite: `src/App.tsx`, `src/main.tsx`, `src/App.css`, `vite.config.ts`, `index.html`, `tsconfig.app.json`, `tsconfig.node.json`, `info.md`

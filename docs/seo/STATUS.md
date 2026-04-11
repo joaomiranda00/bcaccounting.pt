@@ -151,6 +151,12 @@ Concluir o refinamento on-page das páginas `Contabilidade`, `Consultoria Fiscal
 - Documentado em:
   - `docs/cleanup/MIGRATION_CLEANUP.md`
 
+## Ajuste visual da homepage
+- A secção `O Nosso Processo` na homepage foi redesenhada em `src/views/Home.tsx`.
+- O layout passou de uma apresentação linear para uma timeline vertical com eixo central em desktop.
+- Em mobile e tablet, a secção mantém coluna única, ordem natural e legibilidade simples.
+- Foram feitos microajustes de copy apenas para reforçar clareza e encaixe no novo layout.
+
 ## Fecho Operacional
 - Estado atual global do projeto SEO:
   - base técnica SEO implementada no App Router
