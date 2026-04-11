@@ -52,7 +52,7 @@ Com base na copy existente, a BCA posiciona-se como parceiro próximo para empre
 - Helper reutilizável de SEO em `src/lib/seo.ts`
 - Schema e JSON-LD suportados por `src/lib/structured-data.ts` e `src/components/seo/JsonLd.tsx`
 - `robots.txt` e `sitemap.xml` gerados no App Router em `src/app/robots.ts` e `src/app/sitemap.ts`
-- Código legado de Vite/React Router presente no repositório, mas fora do fluxo principal do Next
+- O legado confirmado de Vite/React Router foi removido na limpeza técnica pós-migração de 2026-04-11
 
 ## Prioridades SEO
 1. SEO on-page

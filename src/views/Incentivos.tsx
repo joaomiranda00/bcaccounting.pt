@@ -354,6 +354,35 @@ const Incentivos = () => {
             </div>
           </div>
         </section>
+
+        <section className="content-block py-16 bg-[#F5F5F5]">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl border border-[#E0E0E0] bg-white p-8">
+              <h2 className="text-2xl font-bold text-[#333] mb-4">
+                Antes de Avançar para uma Candidatura
+              </h2>
+              <p className="text-[#666] leading-relaxed mb-6">
+                Se está a preparar um projeto de investimento, vale a pena rever
+                o artigo introdutório do blog e esclarecer dúvidas iniciais
+                antes de enquadrar a candidatura com a BCA.
+              </p>
+              <div className="flex flex-wrap gap-4 text-sm">
+                <Link
+                  href="/blog/como-preparar-uma-candidatura-a-incentivos-para-a-sua-empresa"
+                  className="text-[#C1272D] hover:underline"
+                >
+                  Ler artigo sobre preparação de candidatura
+                </Link>
+                <Link href="/faq" className="text-[#C1272D] hover:underline">
+                  Ver perguntas frequentes
+                </Link>
+                <Link href="/contactos" className="text-[#C1272D] hover:underline">
+                  Pedir avaliação inicial
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* CTA Section */}
@@ -363,8 +392,8 @@ const Incentivos = () => {
             Quer Candidatar-se a Incentivos?
           </h2>
           <p className="text-xl text-white/80 mb-8">
-            Contacte-nos para uma avaliação gratuita e descubra quais os 
-            incentivos disponíveis para o seu projeto.
+            Contacte-nos para enquadrar o seu projeto e perceber que tipo de
+            apoio pode fazer sentido antes de avançar para candidatura.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/contactos" className="btn-white">

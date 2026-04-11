@@ -118,6 +118,23 @@ Auditoria viva baseada na codebase atual do projeto em `src/app`, `src/views`, `
   - Resultado: quick win técnico nas superfícies editoriais com maior potencial SEO.
   - Limite atual: continuam a existir `<img>` noutros templates institucionais e de serviço.
 
+### On-page e linking
+- `Contabilidade`, `Consultoria Fiscal` e `Incentivos ao Investimento` passaram a ligar de forma contextual para artigos relevantes do blog, FAQ e contactos.
+  - Evidência atual:
+    - `src/views/Contabilidade.tsx`
+    - `src/views/ConsultoriaFiscal.tsx`
+    - `src/views/Incentivos.tsx`
+  - Resultado: melhor distribuição de autoridade interna e redução de isolamento entre páginas de serviço e cluster editorial.
+  - Limite atual: `Consultoria de Gestão` continua sem bloco dedicado para artigo relacionado.
+
+### Normalização técnica da codebase
+- O legado confirmado da migração React/Vite foi removido do repositório.
+  - Evidência atual:
+    - ausência de `src/App.tsx`, `src/main.tsx`, `vite.config.ts`, `index.html`, `tsconfig.app.json` e `tsconfig.node.json`
+    - runtime ativo centrado em `src/app/*`
+    - documentação técnica em `docs/cleanup/MIGRATION_CLEANUP.md`
+  - Resultado: menor ruído operacional e menor risco de decisões baseadas numa arquitetura já descontinuada.
+
 ## Ainda em aberto
 
 ## Prioridade Alta
@@ -130,13 +147,13 @@ Auditoria viva baseada na codebase atual do projeto em `src/app`, `src/views`, `
 ## Prioridade Média
 
 ### Técnica
-- O projeto contém código legado de Vite/React Router em paralelo com Next.
-  - Evidência: `src/App.tsx`, `src/main.tsx`, `README.md`, `info.md`.
-  - Impacto: aumenta ruído operacional e pode gerar decisões erradas em sessões futuras se não for documentado.
-
 - Persistem imagens de conteúdo com `<img>` remoto fora do cluster editorial.
   - Evidência: múltiplas ocorrências em `src/views/Home.tsx`, `src/views/Sobre.tsx`, `src/views/Contabilidade.tsx`, `src/views/ConsultoriaFiscal.tsx`, `src/views/ConsultoriaGestao.tsx` e `src/views/Incentivos.tsx`.
   - Impacto: potencial margem adicional de melhoria em Core Web Vitals sem urgência crítica nesta fase.
+
+- A integração recomendada do lint com Next continua incompleta.
+  - Evidência: o build mantém o aviso `The Next.js plugin was not detected in your ESLint configuration`.
+  - Impacto: a codebase compila, mas falta alinhar a configuração de lint com a convenção esperada do ecossistema Next.
 
 ### On-page
 - A homepage e várias páginas de serviço têm copy funcional, mas genérica para termos de pesquisa de alta intenção.

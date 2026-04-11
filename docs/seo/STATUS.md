@@ -96,25 +96,30 @@
   - FAQ com marcação estruturada
   - blog com schema por artigo
   - sitemap e robots dinâmicos
+- A codebase deixou de estar híbrida:
+  - o legado confirmado de React/Vite foi removido
+  - a arquitetura ativa está concentrada em `src/app/*`, `src/views/*`, `src/content/*`, `src/components/*` e `src/lib/*`
+  - o inventário UI foi reduzido aos componentes realmente usados
 - Continuam em aberto:
   - submissão real do formulário de contactos
-  - reforço on-page nas páginas de serviço não revistas nesta sessão
+  - reforço on-page de profundidade nas páginas de serviço ainda mais genéricas
   - expansão editorial do blog para gestão, fiscalidade complementar e incentivos por programa
   - rollout adicional de `next/image` fora do blog, se o risco visual for aceitável
   - revisão de elementos com ação simulada no blog/newsletter, se a estratégia assim o exigir
+  - alinhamento da configuração ESLint com a convenção recomendada do Next
 
 ## O que falta fazer
-- rever on-page das páginas de serviço ainda não intervencionadas:
+- rever on-page de maior profundidade nas páginas:
   - `/servicos/contabilidade`
   - `/servicos/consultoria-fiscal`
   - `/servicos/incentivos-ao-investimento`
-- ligar essas páginas de serviço aos novos artigos do blog
+- criar primeiro artigo do cluster de gestão e ligá-lo a `/servicos/consultoria-de-gestao`
 - avaliar rollout de `next/image` nas restantes páginas com `<img>`
 - validar consistência legal da política de cookies face à implementação real
 - validar futuro tratamento do formulário e da newsletter, se forem para produção real
 
 ## Próxima tarefa recomendada
-Concluir o on-page das páginas `Contabilidade`, `Consultoria Fiscal` e `Incentivos ao Investimento`, ligando-as aos artigos já publicados, e depois tratar conversão real do formulário e alinhamento legal/cookies.
+Concluir o refinamento on-page das páginas `Contabilidade`, `Consultoria Fiscal` e `Incentivos ao Investimento`, já com os novos links contextuais ativos, e depois criar o primeiro artigo do cluster de gestão antes de tratar conversão real do formulário e alinhamento legal/cookies.
 
 ## Decisões pendentes
 - Se a localização secundária a trabalhar além de Vila do Conde será Porto, Grande Porto ou outra.
@@ -125,8 +130,56 @@ Concluir o on-page das páginas `Contabilidade`, `Consultoria Fiscal` e `Incenti
 ## Riscos / notas importantes
 - Evitar alterações de copy antes de fechar a intenção principal de cada página.
 - Evitar refactors visuais grandes nesta fase.
-- Não interpretar o código legado de Vite como arquitetura ativa do website.
+- Não reintroduzir padrões legados de Vite/React Router; a arquitetura ativa é exclusivamente Next.js App Router.
 - Em temas legais e de tracking, usar `Por confirmar` quando a codebase não comprovar a implementação.
 - Em conteúdos fiscais e de incentivos, validar sempre relevância temporal antes de publicar novos artigos.
 - O rollout de `next/image` foi intencionalmente limitado ao blog para evitar regressões visuais em massa numa fase técnica.
 - O build passou, mas ficou registado um aviso de configuração ESLint do Next que pode ser tratado numa fase técnica própria.
+
+## Sessão de limpeza pós-migração
+- Removidos:
+  - `src/App.tsx`, `src/main.tsx`, `src/App.css`
+  - `vite.config.ts`, `index.html`, `tsconfig.app.json`, `tsconfig.node.json`, `info.md`
+  - inventário `src/components/ui/*` não usado pelo runtime atual
+  - `src/hooks/use-mobile.ts`
+- Normalizados:
+  - `README.md` raiz
+  - `package.json`
+  - `tsconfig.json`
+  - `tailwind.config.js`
+  - `components.json`
+- Documentado em:
+  - `docs/cleanup/MIGRATION_CLEANUP.md`
+
+## Fecho Operacional
+- Estado atual global do projeto SEO:
+  - base técnica SEO implementada no App Router
+  - metadata, canonicals, schema principal, robots e sitemap validados
+  - homepage, hub de serviços, contactos, FAQ e blog em estado funcional e coerente
+  - blog preparado para crescimento editorial com páginas indexáveis reais
+- O que está concluído:
+  - documentação de continuidade
+  - metadata por rota
+  - base on-page das páginas prioritárias
+  - arquitetura editorial do blog
+  - schema `AccountingService`, `FAQPage` e `BlogPosting`
+  - sitemap e robots dinâmicos
+  - linking editorial base entre blog, FAQ, contactos e principais serviços
+- O que continua pendente:
+  - integração real do formulário de contactos
+  - revisão legal/técnica da política de cookies
+  - expansão do cluster editorial de gestão
+  - maior profundidade de copy nas três páginas de serviço com texto ainda mais homogéneo
+  - rollout seletivo de `next/image` fora do blog
+- O que é prioridade futura:
+  - reforçar `Contabilidade`, `Consultoria Fiscal` e `Incentivos ao Investimento`
+  - criar artigo-base para `Consultoria de Gestão`
+  - alinhar conversão real e conformidade legal
+- O que pode esperar:
+  - a base atual já suporta crescimento SEO incremental sem refactor estrutural
+  - novas sessões podem focar-se em conteúdos, conversão e performance adicional
+- Próximos passos recomendados:
+  1. aprofundar copy e diferenciação das três páginas de serviço ainda mais genéricas
+  2. publicar o primeiro artigo do cluster de gestão e ligá-lo à respetiva página de serviço
+  3. decidir tratamento real do formulário, newsletter e política de cookies
+  4. avaliar otimização adicional de imagens fora do cluster editorial

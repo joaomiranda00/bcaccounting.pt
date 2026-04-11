@@ -225,6 +225,12 @@ const Contactos = () => {
                     e análise para decisão
                   </li>
                   <li>
+                    <Link href="/servicos/incentivos-ao-investimento" className="text-[#C1272D] hover:underline">
+                      Incentivos ao investimento
+                    </Link>{' '}
+                    e enquadramento de candidaturas
+                  </li>
+                  <li>
                     Perguntas frequentes sobre serviços e processo em{' '}
                     <Link href="/faq" className="text-[#C1272D] hover:underline">
                       FAQ

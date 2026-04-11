@@ -280,6 +280,35 @@ const Contabilidade = () => {
             </div>
           </div>
         </section>
+
+        <section className="content-block py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl border border-[#E0E0E0] bg-[#F9F9F9] p-8">
+              <h2 className="text-2xl font-bold text-[#333] mb-4">
+                Leitura Relacionada e Próximos Passos
+              </h2>
+              <p className="text-[#666] leading-relaxed mb-6">
+                Se está a avaliar apoio contabilístico ou a ponderar mudança de
+                parceiro, pode aprofundar o tema no blog e esclarecer dúvidas
+                frequentes antes de avançar para contacto.
+              </p>
+              <div className="flex flex-wrap gap-4 text-sm">
+                <Link
+                  href="/blog/como-escolher-um-contabilista-para-a-sua-empresa-em-vila-do-conde"
+                  className="text-[#C1272D] hover:underline"
+                >
+                  Ler artigo sobre escolha de contabilista
+                </Link>
+                <Link href="/faq" className="text-[#C1272D] hover:underline">
+                  Ver perguntas frequentes
+                </Link>
+                <Link href="/contactos" className="text-[#C1272D] hover:underline">
+                  Pedir enquadramento à BCA
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* CTA Section */}
@@ -289,12 +318,12 @@ const Contabilidade = () => {
             Precisa de um Serviço de Contabilidade?
           </h2>
           <p className="text-xl text-white/80 mb-8">
-            Contacte-nos para uma reunião sem compromisso e descubra como 
-            podemos ajudar a sua empresa.
+            Contacte-nos para enquadrar a realidade da sua empresa e perceber
+            como a BCA pode apoiar o acompanhamento contabilístico do negócio.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/contactos" className="btn-white">
-              Pedir Orçamento
+              Pedir Enquadramento
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
             <a href="tel:252642059" className="btn-secondary border-white text-white hover:bg-white hover:text-[#C1272D]">

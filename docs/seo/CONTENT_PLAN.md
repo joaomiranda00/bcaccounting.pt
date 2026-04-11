@@ -49,6 +49,7 @@ Melhorar a clareza semântica, a relevância para pesquisas comerciais e a capac
 - Estrutura coerente entre páginas.
 - Bom equilíbrio entre secções e CTA.
 - Copy informativa, mas relativamente homogénea.
+- `Contabilidade`, `Consultoria Fiscal` e `Incentivos ao Investimento` passaram a incluir leitura relacionada para blog, FAQ e contacto.
 
 ### Melhorias recomendadas por padrão
 - Fortalecer o parágrafo inicial com problema + solução + tipo de cliente.
@@ -153,6 +154,13 @@ Melhorar a clareza semântica, a relevância para pesquisas comerciais e a capac
   - páginas individuais em `/blog/[slug]`
   - artigos-base publicados com ligação a serviços principais
   - estrutura preparada para expansão futura sem refactor grande
+
+## Ajustes finais de revisão global
+- Páginas `Contabilidade`, `Consultoria Fiscal` e `Incentivos ao Investimento`:
+  - links contextuais adicionados para artigo relacionado, FAQ e contacto
+  - microcopy comercial ajustada para evitar promessas não confirmadas
+- `Contactos`:
+  - bloco "Podemos ajudar com" expandido para incluir incentivos ao investimento
 
 ## Itens por confirmar antes de copy profunda
 - setores prioritários da BCA

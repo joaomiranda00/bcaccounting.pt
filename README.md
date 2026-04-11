@@ -1,73 +1,37 @@
-# React + TypeScript + Vite
+# BC Accounting
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website institucional da BCA / BC Accounting construído com Next.js 15 e App Router.
 
-Currently, two official plugins are available:
+## Stack ativa
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- App Router em `src/app/*`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Estrutura principal
+- `src/app`: rotas, metadata, sitemap, robots e entrypoints do App Router
+- `src/views`: composição das páginas institucionais e de serviço
+- `src/components`: layout e componentes reutilizáveis
+- `src/content`: conteúdo estruturado do blog e FAQ
+- `src/lib`: helpers de SEO, schema e utilitários
+- `docs/seo`: documentação operacional do projeto SEO
+- `docs/cleanup`: registo técnico da limpeza pós-migração
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Scripts
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Fluxo de trabalho
+1. Ler `docs/seo/README.md`
+2. Ler `docs/seo/STATUS.md`
+3. Confirmar a implementação em `src/app/*` e `src/views/*`
+4. Atualizar documentação relevante após alterações estruturais ou SEO
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Notas
+- A arquitetura ativa é exclusivamente Next.js App Router.
+- O legado React/Vite foi removido na limpeza pós-migração documentada em `docs/cleanup/MIGRATION_CLEANUP.md`.

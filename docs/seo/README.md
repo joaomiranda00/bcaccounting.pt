@@ -48,7 +48,8 @@ Esta pasta cobre:
 - O blog usa conteúdo estático local estruturado em `src/content/blog.ts`.
 - Existem páginas individuais de artigo em `src/app/blog/[slug]/page.tsx`, com metadata própria e fallback dedicado.
 - `robots.txt` e `sitemap.xml` são gerados nativamente no App Router em `src/app/robots.ts` e `src/app/sitemap.ts`.
-- Existe código legado de Vite/React Router (`src/App.tsx`, `src/main.tsx`, `README.md`, `info.md`) fora do fluxo principal do Next.
+- A codebase foi limpa após a migração: o legado confirmado de React/Vite foi removido e a arquitetura ativa ficou reduzida ao fluxo do Next.js App Router.
+- A limpeza técnica pós-migração está documentada em `docs/cleanup/MIGRATION_CLEANUP.md`.
 
 ## Regras de trabalho
 - Trabalhar de forma incremental e reversível.

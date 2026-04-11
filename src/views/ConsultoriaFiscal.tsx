@@ -308,6 +308,35 @@ const ConsultoriaFiscal = () => {
             </div>
           </div>
         </section>
+
+        <section className="content-block py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl border border-[#E0E0E0] bg-[#F9F9F9] p-8">
+              <h2 className="text-2xl font-bold text-[#333] mb-4">
+                Apoio Fiscal com Contexto Adicional
+              </h2>
+              <p className="text-[#666] leading-relaxed mb-6">
+                Antes de decidir, pode rever o artigo sobre planeamento fiscal
+                para PME e consultar a FAQ para perceber melhor quando faz
+                sentido pedir apoio fiscal mais estruturado.
+              </p>
+              <div className="flex flex-wrap gap-4 text-sm">
+                <Link
+                  href="/blog/planeamento-fiscal-para-pme-o-que-pode-ser-feito-de-forma-legal"
+                  className="text-[#C1272D] hover:underline"
+                >
+                  Ler artigo sobre planeamento fiscal para PME
+                </Link>
+                <Link href="/faq" className="text-[#C1272D] hover:underline">
+                  Consultar perguntas frequentes
+                </Link>
+                <Link href="/contactos" className="text-[#C1272D] hover:underline">
+                  Falar com a BCA
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* CTA Section */}

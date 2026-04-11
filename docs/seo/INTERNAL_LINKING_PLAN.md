@@ -14,11 +14,11 @@ Reforçar a relação semântica entre homepage, serviços, FAQ, blog e contacto
 - `Contactos` passou a ligar para serviços principais e FAQ.
 - O blog passou a ligar para serviços relacionados a partir dos cards, do bloco introdutório e das páginas individuais de artigo.
 - Os artigos do blog ligam ao serviço principal correspondente, a `/contactos` e a artigos relacionados.
+- `Contabilidade`, `Consultoria Fiscal` e `Incentivos ao Investimento` passaram a ligar para artigo relacionado, FAQ e contactos.
 - Páginas legais têm algumas ligações internas entre si.
 
 ## Lacunas atuais
-- A ligação contextual entre páginas de serviço continua parcial e pode ser expandida nas páginas ainda não revistas na Fase 2.
-- As páginas de serviço ainda não ligam de forma consistente para os novos artigos do blog.
+- `Consultoria de Gestão` ainda não liga de forma explícita para um artigo do blog, porque o cluster editorial de gestão continua por expandir.
 - O linking entre FAQ e serviços existe, mas pode ser aprofundado com mais perguntas por cluster.
 
 ## Relações principais desejadas
@@ -90,6 +90,6 @@ Reforçar a relação semântica entre homepage, serviços, FAQ, blog e contacto
 
 ## Prioridade de implementação
 1. preservar header, footer e breadcrumbs existentes
-2. reforçar cross-linking entre serviços relacionados nas páginas não intervencionadas
-3. ligar páginas de serviço aos novos artigos relevantes do blog
-4. expandir ligações contextuais FAQ -> serviço por tema
+2. reforçar o cluster de gestão com artigo próprio e ligação a partir da página de serviço
+3. expandir ligações contextuais FAQ -> serviço por tema
+4. avaliar ligação editorial adicional a partir da página `Serviços`

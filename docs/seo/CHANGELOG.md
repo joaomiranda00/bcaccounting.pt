@@ -2,6 +2,46 @@
 
 ## 2026-04-11
 
+### Limpeza Técnica Pós-Migração Next.js
+- Removidos:
+  - ficheiros legados da stack React/Vite: `src/App.tsx`, `src/main.tsx`, `src/App.css`, `vite.config.ts`, `index.html`, `tsconfig.app.json`, `tsconfig.node.json`, `info.md`
+  - inventário `src/components/ui/*` sem uso no runtime atual, mantendo apenas `button`, `input`, `label` e `textarea`
+  - `src/hooks/use-mobile.ts`, que apenas servia o `sidebar` legado
+- Normalizados:
+  - `README.md` raiz para refletir Next.js App Router
+  - `package.json`, `tsconfig.json`, `tailwind.config.js` e `components.json`
+  - documentação técnica de limpeza em `docs/cleanup/MIGRATION_CLEANUP.md`
+  - documentação SEO para remover referências desatualizadas ao legado Vite/React Router
+- Impacto esperado:
+  - arquitetura ativa mais inequívoca para futuras sessões
+  - menos ruído estrutural e menos dependências sem uso
+  - menor risco de decisões baseadas em ficheiros ou padrões descontinuados
+- Validação:
+  - `npm run lint` executado com sucesso
+  - `npm run build` executado com sucesso
+  - manteve-se apenas o aviso não bloqueante sobre a configuração ESLint do Next
+
+### Revisão Final Global
+- Validados:
+  - metadata global e por rota
+  - canonicals e indexação principal
+  - schema markup implementado
+  - sitemap e robots do App Router
+  - coerência entre blog, artigos, FAQ, contactos e documentação
+- Corrigidos:
+  - links contextuais adicionados em `Contabilidade`, `Consultoria Fiscal` e `Incentivos ao Investimento` para artigo relacionado, FAQ e contactos
+  - bloco "Podemos ajudar com" em `Contactos` alargado a incentivos ao investimento
+  - microcopy comercial ajustada para remover promessas não confirmadas em CTAs
+  - documentação sincronizada com o estado final pós-fases 1 a 4
+- Pendências assumidas:
+  - formulário de contactos real
+  - cluster editorial de gestão ainda por abrir
+  - revisão legal da política de cookies
+  - rollout adicional de `next/image` fora do blog
+- Validação:
+  - `npm run build` executado com sucesso
+  - manteve-se apenas o aviso não bloqueante sobre a configuração ESLint do Next
+
 ### Fase 4: Refinamentos Técnicos
 - Atualizados:
   - `src/app/layout.tsx`

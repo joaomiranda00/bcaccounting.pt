@@ -62,10 +62,11 @@
   - `h1`: "Serviços de Contabilidade"
   - secções: inclusões, benefícios, público-alvo, processo, CTA
   - copy funcional, mas genérica
+  - links contextuais para artigo do blog, FAQ e contactos adicionados
   - metadata dedicada implementada em `src/app/servicos/contabilidade/page.tsx`
 - Ações recomendadas:
   - reforço de diferenciação e casos de uso
-  - ligar a FAQ e artigos futuros sobre obrigações contabilísticas
+  - aprofundar a proposta de valor acima da dobra
 
 ### `/servicos/consultoria-fiscal`
 - Objetivo: captar leads para consultoria fiscal.
@@ -75,11 +76,12 @@
 - Estado atual:
   - `h1`: "Consultoria Fiscal"
   - secções: serviços fiscais, benefícios, público-alvo, importância, CTA
+  - links contextuais para artigo do blog, FAQ e contactos adicionados
   - metadata dedicada implementada em `src/app/servicos/consultoria-fiscal/page.tsx`
 - Ações recomendadas:
   - melhorar posicionamento para intenção comercial
   - reforçar linguagem de conformidade, risco e planeamento fiscal
-  - ligar a FAQ fiscal e conteúdos sobre IVA/IRC
+  - expandir cluster editorial com conteúdos sobre erros e obrigações fiscais
 
 ### `/servicos/consultoria-de-gestao`
 - Objetivo: captar leads para consultoria de gestão.
@@ -102,6 +104,7 @@
 - Estado atual:
   - `h1`: "Incentivos ao Investimento"
   - secções: apoio, programas, benefícios, público-alvo, processo, CTA
+  - links contextuais para artigo do blog, FAQ e contactos adicionados
   - metadata dedicada implementada em `src/app/servicos/incentivos-ao-investimento/page.tsx`
 - Ações recomendadas:
   - garantir atualização editorial futura por programa
@@ -116,7 +119,7 @@
   - `h1`: "Contacte a BCA"
   - boa exposição de NAP e mapa
   - microcopy de conversão revista na Fase 2
-  - links para serviços e FAQ adicionados
+  - links para serviços principais, incluindo incentivos, e FAQ adicionados
   - formulário com submissão simulada apenas no frontend
   - metadata dedicada implementada em `src/app/contactos/page.tsx`
 - Ações recomendadas:
@@ -240,9 +243,9 @@
   - validar se o conteúdo legal reflete a implementação real
 
 ## Itens estruturais fora do inventário principal
-- `src/App.tsx` e `src/main.tsx`: código legado de Vite/React Router, fora do runtime principal do Next.
 - `src/app/robots.ts` e `src/app/sitemap.ts`: ativos SEO dinâmicos do App Router.
 - `src/lib/structured-data.ts` e `src/components/seo/JsonLd.tsx`: base reutilizável para schema e JSON-LD.
+- `docs/cleanup/MIGRATION_CLEANUP.md`: registo técnico da limpeza pós-migração e normalização estrutural.
 
 ## Mapeamento rápido de headings principais
 
