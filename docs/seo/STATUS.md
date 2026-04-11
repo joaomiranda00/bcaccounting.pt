@@ -35,6 +35,50 @@
 - Implementada metadata por rota principal e legal em `src/app/**/page.tsx`.
 - Validação concluída com `npm run build` sem erros bloqueantes.
 
+## Implementado na Fase 2
+- Melhorias de on-page e copy nas páginas:
+  - `/`
+  - `/servicos`
+  - `/servicos/consultoria-de-gestao`
+  - `/contactos`
+  - `/faq`
+  - `/blog`
+- Reforçado internal linking contextual entre homepage, serviços, FAQ, contactos e blog.
+- O blog passou a funcionar como hub editorial preparatório, antes da arquitetura de artigos.
+
+## Implementado na Fase 3
+- Definida arquitetura editorial estática local em `src/content/blog.ts`.
+- Confirmadas páginas individuais indexáveis em `/blog/[slug]`.
+- Implementados:
+  - `generateStaticParams`
+  - `generateMetadata` por artigo
+  - fallback dedicado para slug inexistente
+  - CTA editorial para serviço e contacto
+  - artigos relacionados
+- Publicados três artigos-base:
+  - contabilidade
+  - consultoria fiscal
+  - incentivos ao investimento
+- Atualizada a listagem `/blog` para usar dados estruturados e ligar para rotas reais.
+- Validação concluída com `npm run build` sem erros bloqueantes.
+
+## Implementado na Fase 4
+- Implementado schema global `AccountingService` com dados confirmados da BCA.
+- Implementado schema `FAQPage` com base no conteúdo visível da página `/faq`.
+- Implementado schema `BlogPosting` nas páginas individuais do blog.
+- Implementado `BreadcrumbList` apenas nas páginas de artigo, onde a hierarquia é estável.
+- Migrados `robots.txt` e `sitemap.xml` para geração nativa do Next App Router.
+- O sitemap dinâmico passou a incluir:
+  - páginas públicas principais
+  - páginas legais
+  - artigos do blog
+- Criada base reutilizável para JSON-LD em:
+  - `src/lib/structured-data.ts`
+  - `src/components/seo/JsonLd.tsx`
+- A FAQ passou a usar fonte de dados partilhada em `src/content/faq.tsx`, reduzindo risco de divergência entre UI e schema.
+- Aplicado `next/image` nas superfícies editoriais do blog como quick win técnico de performance.
+- Validação concluída com `npm run build` sem erros bloqueantes.
+
 ## Estado atual
 - A documentação base SEO existe e está operacional para continuidade entre sessões.
 - As principais páginas e páginas legais já têm metadata dedicada.
@@ -42,44 +86,39 @@
   - `src/app/layout.tsx`
   - `src/lib/seo.ts`
   - `src/app/**/page.tsx`
-- A Fase 2 foi iniciada nas páginas prioritárias:
-  - `/`
-  - `/servicos`
-  - `/servicos/consultoria-de-gestao`
-  - `/contactos`
-  - `/faq`
-  - `/blog`
-- Melhorias implementadas nesta sessão:
-  - hero e proposta de valor mais específicos na homepage
-  - reposicionamento de `Serviços` como hub geral
-  - copy mais operacional em `Consultoria de Gestão`
-  - microcopy de conversão e links úteis em `Contactos`
-  - links contextuais nas respostas do FAQ
-  - blog assumido como hub editorial provisório com ligação a serviços
+- A Fase 2 está parcialmente aplicada nas páginas prioritárias e a Fase 3 ficou funcional no blog.
+- O blog já deixou de ser uma listagem estática sem destino:
+  - existe arquitetura de conteúdo reutilizável
+  - existem páginas individuais indexáveis
+  - existe internal linking editorial base
+- A base técnica SEO ficou mais sólida:
+  - schema principal implementado
+  - FAQ com marcação estruturada
+  - blog com schema por artigo
+  - sitemap e robots dinâmicos
 - Continuam em aberto:
-  - schema markup
-  - blog com páginas de artigo indexáveis
   - submissão real do formulário de contactos
   - reforço on-page nas páginas de serviço não revistas nesta sessão
+  - expansão editorial do blog para gestão, fiscalidade complementar e incentivos por programa
+  - rollout adicional de `next/image` fora do blog, se o risco visual for aceitável
   - revisão de elementos com ação simulada no blog/newsletter, se a estratégia assim o exigir
-  - copy mais diferenciada em páginas com linguagem genérica
 
 ## O que falta fazer
-- decidir arquitetura real do blog antes de produção editorial
-- planear schema markup para entidade local e FAQ
-- avaliar automatização futura de sitemap e robots
 - rever on-page das páginas de serviço ainda não intervencionadas:
   - `/servicos/contabilidade`
   - `/servicos/consultoria-fiscal`
   - `/servicos/incentivos-ao-investimento`
+- ligar essas páginas de serviço aos novos artigos do blog
+- avaliar rollout de `next/image` nas restantes páginas com `<img>`
+- validar consistência legal da política de cookies face à implementação real
 - validar futuro tratamento do formulário e da newsletter, se forem para produção real
 
 ## Próxima tarefa recomendada
-Concluir a Fase 2 nas páginas de serviço ainda não revistas, começando por `Contabilidade`, `Consultoria Fiscal` e `Incentivos ao Investimento`, e depois preparar a transição para a fase editorial do blog.
+Concluir o on-page das páginas `Contabilidade`, `Consultoria Fiscal` e `Incentivos ao Investimento`, ligando-as aos artigos já publicados, e depois tratar conversão real do formulário e alinhamento legal/cookies.
 
 ## Decisões pendentes
 - Se a localização secundária a trabalhar além de Vila do Conde será Porto, Grande Porto ou outra.
-- Se o blog deverá evoluir para CMS, MDX ou conteúdo estático simples.
+- Se o blog deverá manter conteúdo estático local no médio prazo ou evoluir mais tarde para CMS/MDX.
 - Se a política de cookies reflete a implementação técnica real.
 - Se o formulário de contactos terá integração real nesta fase ou numa fase própria de conversão.
 
@@ -88,4 +127,6 @@ Concluir a Fase 2 nas páginas de serviço ainda não revistas, começando por `
 - Evitar refactors visuais grandes nesta fase.
 - Não interpretar o código legado de Vite como arquitetura ativa do website.
 - Em temas legais e de tracking, usar `Por confirmar` quando a codebase não comprovar a implementação.
+- Em conteúdos fiscais e de incentivos, validar sempre relevância temporal antes de publicar novos artigos.
+- O rollout de `next/image` foi intencionalmente limitado ao blog para evitar regressões visuais em massa numa fase técnica.
 - O build passou, mas ficou registado um aviso de configuração ESLint do Next que pode ser tratado numa fase técnica própria.

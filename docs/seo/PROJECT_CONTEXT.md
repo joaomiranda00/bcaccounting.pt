@@ -50,7 +50,8 @@ Com base na copy existente, a BCA posiciona-se como parceiro próximo para empre
 - Metadata global em `src/app/layout.tsx`
 - Metadata por rota em `src/app/**/page.tsx`
 - Helper reutilizável de SEO em `src/lib/seo.ts`
-- `robots.txt` e `sitemap.xml` estáticos em `public/`
+- Schema e JSON-LD suportados por `src/lib/structured-data.ts` e `src/components/seo/JsonLd.tsx`
+- `robots.txt` e `sitemap.xml` gerados no App Router em `src/app/robots.ts` e `src/app/sitemap.ts`
 - Código legado de Vite/React Router presente no repositório, mas fora do fluxo principal do Next
 
 ## Prioridades SEO

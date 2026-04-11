@@ -3,7 +3,9 @@ import type { ReactNode } from 'react';
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import JsonLd from '@/components/seo/JsonLd';
 import { SITE_NAME, SITE_URL } from '@/lib/seo';
+import { getAccountingServiceSchema } from '@/lib/structured-data';
 import '../index.css';
 
 export const metadata: Metadata = {
@@ -42,6 +44,7 @@ export default function RootLayout({
   return (
     <html lang="pt-PT">
       <body>
+        <JsonLd data={getAccountingServiceSchema()} />
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-grow">{children}</main>

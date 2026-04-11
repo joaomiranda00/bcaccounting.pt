@@ -63,9 +63,9 @@ Melhorar a clareza semântica, a relevância para pesquisas comerciais e a capac
   - incentivos
 
 ### Páginas com copy mais genérica
-- `/servicos/consultoria-de-gestao`
-- `/contactos`
-- `/blog`
+- `/servicos/contabilidade`
+- `/servicos/consultoria-fiscal`
+- `/servicos/incentivos-ao-investimento`
 
 ### Observação pós-Fase 2
 - `/`, `/servicos` e `/servicos/consultoria-de-gestao` deixaram de estar entre as páginas mais genéricas do conjunto prioritário desta fase.
@@ -80,18 +80,19 @@ Melhorar a clareza semântica, a relevância para pesquisas comerciais e a capac
 
 ### Melhorias recomendadas
 - Expandir a cobertura de perguntas com foco comercial por serviço.
-- Implementar schema `FAQPage` numa fase técnica posterior.
+- Manter alinhamento entre a fonte de dados partilhada da FAQ, a UI e o schema `FAQPage`.
 
 ## Blog
 
 ### Estado atual
-- Serve agora melhor como hub editorial introdutório.
-- Continua sem arquitetura de artigos individuais.
-- A limitação atual está explícita na página e os cards passam a ligar para serviços relacionados.
+- Funciona como hub editorial com cards ligados a páginas reais de artigo.
+- Os conteúdos estão centralizados em `src/content/blog.ts`.
+- Existem páginas individuais em `/blog/[slug]` com CTA contextual para serviço e contacto.
 
 ### Melhorias recomendadas
-- Definir arquitetura indexável de artigos antes de produção editorial real.
-- Quando existirem artigos reais, substituir estados "em preparação" por páginas individuais.
+- Expandir o volume editorial por cluster mantendo a mesma estrutura local.
+- Manter schema `BlogPosting` ao adicionar novos artigos.
+- Avaliar evolução futura para listagem de artigos relacionados dentro das páginas de serviço.
 
 ## Contactos
 
@@ -142,9 +143,16 @@ Melhorar a clareza semântica, a relevância para pesquisas comerciais e a capac
   - respostas com links contextuais
   - estrutura preparada para futura evolução semântica
 - `Blog`:
-  - página assumida como hub editorial provisório
-  - ligação dos temas a serviços relacionados
-  - limitação atual documentada no conteúdo
+  - listagem editorial ligada a páginas reais de artigo
+  - conteúdos-base criados para contabilidade, fiscalidade e incentivos
+  - CTA editorial contextual para serviços e contactos
+
+## Implementado na Fase 3
+- Blog:
+  - arquitetura estática local definida em `src/content/blog.ts`
+  - páginas individuais em `/blog/[slug]`
+  - artigos-base publicados com ligação a serviços principais
+  - estrutura preparada para expansão futura sem refactor grande
 
 ## Itens por confirmar antes de copy profunda
 - setores prioritários da BCA

@@ -85,7 +85,7 @@
 - Meta atual: herdada do global
 - Meta proposta: `Veja respostas às perguntas frequentes sobre contabilidade, fiscalidade, consultoria de gestão e incentivos ao investimento na BCA.`
 - Notas:
-  - preparar mais tarde suporte a schema `FAQPage`
+  - schema `FAQPage` implementado em `src/app/faq/page.tsx`
 
 ## Blog `/blog`
 - Title atual: herdado do global
@@ -93,7 +93,8 @@
 - Meta atual: herdada do global
 - Meta proposta: `Artigos e conteúdos da BCA sobre contabilidade, fiscalidade, gestão empresarial e incentivos ao investimento para empresas.`
 - Notas:
-  - serve para a listagem; arquitetura de artigos individuais é fase posterior
+  - serve para a listagem editorial
+  - páginas de artigo individuais usam metadata própria via `generateMetadata` em `src/app/blog/[slug]/page.tsx`
 
 ## Política de Privacidade `/politica-de-privacidade`
 - Title atual: herdado do global

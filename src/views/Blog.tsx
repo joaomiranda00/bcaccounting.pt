@@ -3,12 +3,18 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowRight, Tag } from 'lucide-react';
+import type { BlogPostSummary } from '@/content/blog';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Blog = () => {
+type BlogProps = {
+  posts: BlogPostSummary[];
+};
+
+const Blog = ({ posts }: BlogProps) => {
   const pageRef = useRef<HTMLDivElement>(null);
   const [selectedCategory, setSelectedCategory] = useState('Todos');
 
@@ -51,80 +57,21 @@ const Blog = () => {
     return () => ctx.revert();
   }, []);
 
-  const categories = ['Todos', 'Contabilidade', 'Fiscalidade', 'Gestão', 'Incentivos'];
-
-  const posts = [
-    {
-      id: 1,
-      title: 'Como Escolher um Contabilista para a Sua Empresa',
-      excerpt: 'Critérios práticos para avaliar acompanhamento, proximidade, cumprimento e capacidade de leitura financeira no apoio à empresa.',
-      category: 'Contabilidade',
-      date: '15 Jan 2025',
-      readTime: '5 min',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop',
-      supportPage: '/servicos/contabilidade',
-      supportLabel: 'Serviços de Contabilidade',
-    },
-    {
-      id: 2,
-      title: 'O Que uma Empresa Deve Preparar para uma Candidatura a Fundos Europeus',
-      excerpt: 'Guia introdutório sobre informação, enquadramento e documentação útil antes de avançar para uma candidatura.',
-      category: 'Incentivos',
-      date: '10 Jan 2025',
-      readTime: '7 min',
-      image: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&h=400&fit=crop',
-      supportPage: '/servicos/incentivos-ao-investimento',
-      supportLabel: 'Incentivos ao Investimento',
-    },
-    {
-      id: 3,
-      title: 'Diferença Entre Contabilidade e Consultoria de Gestão',
-      excerpt: 'Explicação simples sobre quando a empresa precisa de cumprimento contabilístico e quando precisa de apoio à decisão e controlo.',
-      category: 'Gestão',
-      date: '5 Jan 2025',
-      readTime: '4 min',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
-      supportPage: '/servicos/consultoria-de-gestao',
-      supportLabel: 'Consultoria de Gestão',
-    },
-    {
-      id: 4,
-      title: 'Erros Fiscais Mais Comuns nas PME',
-      excerpt: 'Sinais de risco fiscal frequentes nas PME e formas de reduzir exposição através de acompanhamento adequado.',
-      category: 'Fiscalidade',
-      date: '28 Dez 2024',
-      readTime: '6 min',
-      image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop',
-      supportPage: '/servicos/consultoria-fiscal',
-      supportLabel: 'Consultoria Fiscal',
-    },
-    {
-      id: 5,
-      title: 'Como Saber Se a Sua Empresa Pode Beneficiar de Incentivos ao Investimento',
-      excerpt: 'Perguntas de enquadramento inicial para perceber se o projeto, a empresa e o investimento justificam avançar.',
-      category: 'Incentivos',
-      date: '20 Dez 2024',
-      readTime: '5 min',
-      image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=400&fit=crop',
-      supportPage: '/servicos/incentivos-ao-investimento',
-      supportLabel: 'Incentivos ao Investimento',
-    },
-    {
-      id: 6,
-      title: 'Guia Prático do IVA para Empresas',
-      excerpt: 'Resumo introdutório para empresas que precisam de compreender obrigações, prazos e impacto do IVA na operação.',
-      category: 'Fiscalidade',
-      date: '15 Dez 2024',
-      readTime: '8 min',
-      image: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&h=400&fit=crop',
-      supportPage: '/servicos/consultoria-fiscal',
-      supportLabel: 'Consultoria Fiscal',
-    },
+  const categories = [
+    'Todos',
+    ...Array.from(new Set(posts.map((post) => post.category))),
   ];
+
+  const featuredPost = posts[0];
 
   const filteredPosts = selectedCategory === 'Todos'
     ? posts
     : posts.filter((post) => post.category === selectedCategory);
+
+  const gridPosts =
+    selectedCategory === 'Todos'
+      ? filteredPosts.filter((post) => post.slug !== featuredPost?.slug)
+      : filteredPosts;
 
   return (
     <div ref={pageRef} className="pt-20">
@@ -143,7 +90,8 @@ const Blog = () => {
             <p className="text-xl text-[#666] leading-relaxed">
               Este espaço reúne temas editoriais ligados à contabilidade,
               fiscalidade, gestão e incentivos ao investimento, pensados para
-              apoiar empresas em fase de decisão e esclarecimento.
+              apoiar empresas em fase de decisão e esclarecimento, com ligação
+              direta às áreas de serviço da BCA.
             </p>
           </div>
         </div>
@@ -170,12 +118,12 @@ const Blog = () => {
           </div>
 
           <div className="max-w-4xl mx-auto mb-12 rounded-2xl border border-[#E0E0E0] bg-[#F9F9F9] p-6 text-center">
-            <h2 className="text-2xl font-bold text-[#333] mb-3">Hub editorial em evolução</h2>
+            <h2 className="text-2xl font-bold text-[#333] mb-3">Base editorial BCA</h2>
             <p className="text-[#666] leading-relaxed mb-4">
-              A listagem atual funciona como base editorial para os clusters
-              estratégicos da BCA. Enquanto as páginas individuais de artigo não
-              estão publicadas, use estes temas para explorar os serviços
-              relacionados e perceber onde cada conteúdo se enquadra.
+              O blog dispõe agora de artigos indexáveis ligados aos principais
+              clusters estratégicos da BCA. Novos conteúdos podem ser adicionados
+              a partir desta estrutura local, mantendo consistência editorial,
+              metadata e ligação às páginas de serviço.
             </p>
             <div className="flex flex-wrap justify-center gap-3 text-sm">
               <Link href="/servicos/contabilidade" className="text-[#C1272D] hover:underline">
@@ -196,17 +144,68 @@ const Blog = () => {
             </div>
           </div>
 
+          {featuredPost && selectedCategory === 'Todos' && (
+            <article className="blog-card rounded-2xl overflow-hidden border border-[#E0E0E0] bg-white mb-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="relative h-72 lg:h-full overflow-hidden">
+                  <Image
+                    src={featuredPost.coverImage}
+                    alt={featuredPost.title}
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    priority
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-8 lg:p-10 flex flex-col justify-center">
+                  <div className="inline-flex items-center gap-2 text-sm font-medium text-[#C1272D] mb-4">
+                    <Tag className="w-4 h-4" />
+                    Artigo em destaque
+                  </div>
+                  <h2 className="text-3xl font-bold text-[#333] mb-4">
+                    {featuredPost.title}
+                  </h2>
+                  <p className="text-[#666] leading-relaxed mb-6">
+                    {featuredPost.description}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-4 text-sm text-[#666] mb-6">
+                    <span className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-[#C1272D]" />
+                      {featuredPost.formattedPublishedAt}
+                    </span>
+                    <span className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-[#C1272D]" />
+                      {featuredPost.readingTime}
+                    </span>
+                    <span>{featuredPost.category}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-4">
+                    <Link href={`/blog/${featuredPost.slug}`} className="btn-primary">
+                      Ler Artigo
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Link>
+                    <Link href={featuredPost.serviceLink} className="btn-secondary">
+                      Ver {featuredPost.serviceLabel}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </article>
+          )}
+
           {/* Blog Grid */}
           <div className="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post) => (
+            {gridPosts.map((post) => (
               <article
-                key={post.id}
+                key={post.slug}
                 className="blog-card bg-white rounded-xl overflow-hidden border border-[#E0E0E0] card-hover group"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={post.image}
+                  <Image
+                    src={post.coverImage}
                     alt={post.title}
+                    fill
+                    sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute top-4 left-4">
@@ -219,11 +218,11 @@ const Blog = () => {
                   <div className="flex items-center gap-4 text-sm text-[#666] mb-3">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
-                      {post.date}
+                      {post.formattedPublishedAt}
                     </span>
                     <span className="flex items-center gap-1">
                       <Clock className="w-4 h-4" />
-                      {post.readTime}
+                      {post.readingTime}
                     </span>
                   </div>
                   <h3 className="text-lg font-bold text-[#333] mb-2 group-hover:text-[#C1272D] transition-colors line-clamp-2">
@@ -232,24 +231,40 @@ const Blog = () => {
                   <p className="text-[#666] text-sm leading-relaxed mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
-                  <p className="text-xs text-[#666] mb-4">
-                    Artigo completo em preparação.
-                  </p>
-                  <Link
-                    href={post.supportPage}
-                    className="inline-flex items-center text-[#C1272D] text-sm font-medium"
-                  >
-                    Ver serviço relacionado: {post.supportLabel}
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
-                  </Link>
+                  <div className="space-y-3">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="inline-flex items-center text-[#C1272D] text-sm font-medium"
+                    >
+                      Ler artigo
+                      <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
+                    </Link>
+                    <div>
+                      <Link
+                        href={post.serviceLink}
+                        className="text-xs text-[#666] hover:text-[#C1272D] transition-colors"
+                      >
+                        Serviço relacionado: {post.serviceLabel}
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </article>
             ))}
           </div>
 
-          <div className="text-center mt-12 text-sm text-[#666]">
-            A arquitetura de artigos individuais continua por implementar e fica
-            documentada para a fase editorial seguinte.
+          {gridPosts.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-[#666]">
+                Não existem artigos nesta categoria neste momento.
+              </p>
+            </div>
+          )}
+
+          <div className="text-center mt-12 text-sm text-[#666] max-w-3xl mx-auto">
+            Novos artigos podem ser adicionados através da estrutura local de
+            conteúdo do projeto, mantendo consistência de metadata, leitura e
+            ligação às páginas de serviço.
           </div>
         </div>
       </section>
@@ -261,8 +276,9 @@ const Blog = () => {
             <Tag className="w-12 h-12 mx-auto mb-4 opacity-80" />
             <h2 className="text-3xl font-bold mb-4">Subscreva a Nossa Newsletter</h2>
             <p className="text-white/80 mb-8 max-w-xl mx-auto">
-              Receba as últimas notícias, artigos e dicas sobre contabilidade, 
-              fiscalidade e gestão diretamente no seu email.
+              Receba conteúdos sobre contabilidade, fiscalidade, gestão e
+              incentivos ao investimento. A integração real deste formulário
+              permanece por confirmar.
             </p>
             <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input

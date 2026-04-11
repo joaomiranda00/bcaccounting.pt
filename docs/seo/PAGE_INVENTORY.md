@@ -4,6 +4,7 @@
 - Inventário baseado nas rotas visíveis em `src/app/*`.
 - Todas as páginas públicas atuais reexportam componentes de `src/views/*`.
 - O campo `estado atual` resume o que foi confirmado na codebase.
+- Todas as páginas públicas herdam schema global `AccountingService` via `src/app/layout.tsx`.
 
 ## Páginas principais
 
@@ -18,8 +19,9 @@
   - copy com referência a Vila do Conde
   - secções de serviços, prova social, incentivos, processo, localização e CTA
   - metadata dedicada implementada em `src/app/page.tsx`
+  - herda schema global `AccountingService`
 - Ações recomendadas:
-  - preparar schema de negócio local em fase seguinte
+  - avaliar mais tarde se faz sentido complementar com schema específico de página, sem duplicar a entidade global
 
 ### `/sobre`
 - Objetivo: reforçar credibilidade, equipa, posicionamento e confiança.
@@ -128,13 +130,13 @@
 - Intenção de pesquisa: informacional + assistiva à conversão
 - Estado atual:
   - `h1`: "Perguntas Frequentes"
-  - 10 FAQs em array local
+  - 10 FAQs em fonte de dados partilhada em `src/content/faq.tsx`
   - links contextuais para serviços e contactos implementados na Fase 2
   - pesquisa interna e categorias
-  - sem schema FAQ
+  - schema `FAQPage` implementado em `src/app/faq/page.tsx`
   - metadata dedicada implementada em `src/app/faq/page.tsx`
 - Ações recomendadas:
-  - implementar schema `FAQPage` em fase seguinte
+  - expandir cobertura temática por cluster mantendo alinhamento entre UI e JSON-LD
 
 ### `/blog`
 - Objetivo: captar tráfego informacional e apoiar serviços.
@@ -143,14 +145,62 @@
 - Intenção de pesquisa: informacional
 - Estado atual:
   - `h1`: "Blog BCA"
-  - página reforçada na Fase 2 como hub editorial provisório
-  - posts hardcoded em array local
-  - sem páginas de artigo
-  - cards ligados a serviços relacionados
+  - página funciona como hub editorial real
+  - artigos carregados a partir de `src/content/blog.ts`
+  - cards ligados a rotas reais de artigo e a serviços relacionados
   - metadata dedicada implementada em `src/app/blog/page.tsx`
 - Ações recomendadas:
-  - definir arquitetura real de artigos antes de investir em produção editorial
-  - transformar posts em rotas indexáveis
+  - expandir cobertura editorial por cluster
+  - considerar destaque futuro para artigos por tema ou serviço
+
+### `/blog/[slug]`
+- Objetivo: captar tráfego long-tail, responder a intenções informacionais e apoiar páginas de serviço.
+- Keyword principal: variável por artigo
+- Keywords secundárias: variáveis por tema e cluster
+- Intenção de pesquisa: informacional + assistiva à conversão
+- Estado atual:
+  - rota dinâmica indexável implementada em `src/app/blog/[slug]/page.tsx`
+  - `generateStaticParams` e `generateMetadata` a partir de `src/content/blog.ts`
+  - canonical e metadata social por artigo
+  - schema `BlogPosting` e `BreadcrumbList` implementados nas páginas de artigo
+  - fallback dedicado para slug inexistente em `src/app/blog/[slug]/not-found.tsx`
+  - CTA editorial para serviço principal e `/contactos`
+  - artigos relacionados entre si
+- Ações recomendadas:
+  - ligar páginas de serviço aos artigos correspondentes
+
+### `/blog/como-escolher-um-contabilista-para-a-sua-empresa-em-vila-do-conde`
+- Objetivo: captar intenção comercial assistida em torno da escolha de contabilista.
+- Keyword principal: `como escolher um contabilista`
+- Keywords secundárias: `contabilista Vila do Conde`, `contabilista para empresas`, `serviços de contabilidade`
+- Intenção de pesquisa: comercial investigativa
+- Estado atual:
+  - artigo publicado
+  - apoia `/servicos/contabilidade`
+- Ações recomendadas:
+  - avaliar futura ligação a FAQ de mudança de contabilista
+
+### `/blog/planeamento-fiscal-para-pme-o-que-pode-ser-feito-de-forma-legal`
+- Objetivo: captar procura informacional qualificada sobre enquadramento fiscal para PME.
+- Keyword principal: `planeamento fiscal PME`
+- Keywords secundárias: `consultoria fiscal para empresas`, `apoio fiscal para empresas`
+- Intenção de pesquisa: informacional + comercial assistiva
+- Estado atual:
+  - artigo publicado
+  - apoia `/servicos/consultoria-fiscal`
+- Ações recomendadas:
+  - expandir cluster com artigo complementar sobre erros fiscais comuns
+
+### `/blog/como-preparar-uma-candidatura-a-incentivos-para-a-sua-empresa`
+- Objetivo: captar procura mista sobre preparação de candidaturas a incentivos.
+- Keyword principal: `candidatura a incentivos empresas`
+- Keywords secundárias: `incentivos ao investimento`, `fundos europeus para empresas`
+- Intenção de pesquisa: informacional + comercial assistiva
+- Estado atual:
+  - artigo publicado
+  - apoia `/servicos/incentivos-ao-investimento`
+- Ações recomendadas:
+  - expandir cluster com conteúdos mais específicos por programa quando houver validação temporal
 
 ## Páginas secundárias / legais
 
@@ -191,7 +241,8 @@
 
 ## Itens estruturais fora do inventário principal
 - `src/App.tsx` e `src/main.tsx`: código legado de Vite/React Router, fora do runtime principal do Next.
-- `public/robots.txt` e `public/sitemap.xml`: ativos SEO estáticos.
+- `src/app/robots.ts` e `src/app/sitemap.ts`: ativos SEO dinâmicos do App Router.
+- `src/lib/structured-data.ts` e `src/components/seo/JsonLd.tsx`: base reutilizável para schema e JSON-LD.
 
 ## Mapeamento rápido de headings principais
 

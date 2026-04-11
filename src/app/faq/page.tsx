@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 
+import JsonLd from '@/components/seo/JsonLd';
+import { faqItems } from '@/content/faq';
 import { createPageMetadata } from '@/lib/seo';
+import { getFaqPageSchema } from '@/lib/structured-data';
 import FAQ from '@/views/FAQ';
 
 export const metadata: Metadata = createPageMetadata({
@@ -16,4 +19,18 @@ export const metadata: Metadata = createPageMetadata({
   ],
 });
 
-export default FAQ;
+export default function FAQPage() {
+  return (
+    <>
+      <JsonLd
+        data={getFaqPageSchema(
+          faqItems.map((item) => ({
+            question: item.question,
+            answerText: item.answerText,
+          }))
+        )}
+      />
+      <FAQ />
+    </>
+  );
+}

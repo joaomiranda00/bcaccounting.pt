@@ -2,6 +2,69 @@
 
 ## 2026-04-11
 
+### Fase 4: Refinamentos Técnicos
+- Atualizados:
+  - `src/app/layout.tsx`
+  - `src/app/faq/page.tsx`
+  - `src/app/blog/[slug]/page.tsx`
+  - `src/app/robots.ts`
+  - `src/app/sitemap.ts`
+  - `src/views/FAQ.tsx`
+  - `src/views/Blog.tsx`
+  - `src/content/faq.tsx`
+  - `src/lib/structured-data.ts`
+  - `src/components/seo/JsonLd.tsx`
+  - `next.config.ts`
+  - `docs/seo/README.md`
+  - `docs/seo/PROJECT_CONTEXT.md`
+  - `docs/seo/SEO_AUDIT.md`
+  - `docs/seo/PAGE_INVENTORY.md`
+  - `docs/seo/STATUS.md`
+  - `docs/seo/IMPLEMENTATION_ROADMAP.md`
+  - `docs/seo/CHANGELOG.md`
+- Removidos:
+  - `public/robots.txt`
+  - `public/sitemap.xml`
+- Motivo:
+  - consolidar a base técnica SEO com schema útil e coerente
+  - migrar rastreabilidade para soluções nativas do Next App Router
+  - reduzir risco de divergência entre conteúdo visível e marcação estruturada
+- Impacto esperado:
+  - melhor qualificação técnica da entidade local BCA
+  - FAQ e artigos preparados para interpretação semântica mais rica
+  - sitemap e robots mais sustentáveis para futuras fases editoriais
+- Validação:
+  - `npm run build` executado com sucesso
+  - manteve-se apenas o aviso não bloqueante sobre a configuração ESLint do Next
+
+### Fase 3: Blog e Autoridade
+- Atualizados:
+  - `src/content/blog.ts`
+  - `src/views/Blog.tsx`
+  - `src/app/blog/page.tsx`
+  - `src/app/blog/[slug]/page.tsx`
+  - `src/app/blog/[slug]/not-found.tsx`
+  - `docs/seo/README.md`
+  - `docs/seo/CONTENT_PLAN.md`
+  - `docs/seo/BLOG_PLAN.md`
+  - `docs/seo/INTERNAL_LINKING_PLAN.md`
+  - `docs/seo/METADATA_PLAN.md`
+  - `docs/seo/SEO_AUDIT.md`
+  - `docs/seo/PAGE_INVENTORY.md`
+  - `docs/seo/STATUS.md`
+  - `docs/seo/CHANGELOG.md`
+- Motivo:
+  - transformar o blog numa base editorial indexável e escalável
+  - criar páginas individuais de artigo com metadata própria
+  - alinhar a documentação com o estado real pós-implementação da Fase 3
+- Impacto esperado:
+  - criação de base long-tail para o cluster editorial da BCA
+  - melhor ligação entre blog, serviços e contactos
+  - maior continuidade operacional para futuras sessões editoriais
+- Validação:
+  - `npm run build` executado com sucesso após correção de um detalhe sintático no `not-found` do blog
+  - manteve-se apenas o aviso não bloqueante sobre a configuração ESLint do Next
+
 ### Fase 2: On-page e Conteúdos
 - Atualizados:
   - `src/views/Home.tsx`

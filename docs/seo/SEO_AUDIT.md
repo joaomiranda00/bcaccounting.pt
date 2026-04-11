@@ -47,20 +47,82 @@ Auditoria viva baseada na codebase atual do projeto em `src/app`, `src/views`, `
   - Evidência atual: introdução revista, limitação explícita e links para serviços relacionados em `src/views/Blog.tsx`.
   - Resultado: melhor coerência estratégica até existir arquitetura de artigos.
 
+## Resolvido na Fase 3
+
+### Técnica
+- O blog passou a ter páginas individuais de artigo indexáveis.
+  - Evidência atual:
+    - `src/app/blog/[slug]/page.tsx`
+    - `src/app/blog/[slug]/not-found.tsx`
+    - `generateStaticParams` com slugs locais
+    - `generateMetadata` por artigo
+  - Resultado: o blog deixa de ser apenas uma listagem estática e passa a captar potencial long-tail por URL.
+
+- A arquitetura editorial passou a estar centralizada em fonte de dados local estruturada.
+  - Evidência atual: `src/content/blog.ts`.
+  - Resultado: expansão futura simplificada, com leitura consistente de datas, tempo de leitura, artigos relacionados e ligação a serviços.
+
+### On-page
+- A listagem `/blog` passou a funcionar como hub editorial real.
+  - Evidência atual: `src/app/blog/page.tsx` consome `getBlogPostSummaries()` e `src/views/Blog.tsx` liga para rotas reais de artigo.
+  - Resultado: melhor coerência entre listagem, metadata, artigos e intenção de pesquisa informacional.
+
+- Foi criada base inicial de internal linking editorial entre artigos, serviços e contactos.
+  - Evidência atual:
+    - CTA editorial nas páginas de artigo
+    - links para serviço principal e `/contactos`
+    - bloco de artigos relacionados
+  - Resultado: melhor distribuição de autoridade interna e apoio à conversão assistida.
+
+## Resolvido na Fase 4
+
+### Técnica
+- Schema global da entidade BCA implementado com `AccountingService`.
+  - Evidência atual:
+    - `src/app/layout.tsx`
+    - `src/lib/structured-data.ts`
+    - `src/components/seo/JsonLd.tsx`
+  - Resultado: reforço da entidade local e da consistência semântica do negócio na camada técnica.
+
+- O FAQ passou a ter marcação estruturada `FAQPage`.
+  - Evidência atual:
+    - `src/app/faq/page.tsx`
+    - `src/content/faq.tsx`
+  - Resultado: base técnica preparada para rich results coerentes com o conteúdo visível.
+
+- Os artigos do blog passaram a ter schema `BlogPosting`.
+  - Evidência atual:
+    - `src/app/blog/[slug]/page.tsx`
+    - `src/lib/structured-data.ts`
+  - Resultado: melhor qualificação técnica das páginas editoriais individuais.
+
+- `robots.txt` e `sitemap.xml` passaram a ser gerados nativamente no App Router.
+  - Evidência atual:
+    - `src/app/robots.ts`
+    - `src/app/sitemap.ts`
+  - Resultado: menor risco de desatualização manual e inclusão automática dos artigos do blog no sitemap.
+
+## Parcialmente resolvido na Fase 4
+
+### Técnica
+- Breadcrumb schema foi implementado apenas nas páginas de artigo do blog.
+  - Evidência atual: `src/app/blog/[slug]/page.tsx`.
+  - Resultado: a marcação foi aplicada onde a hierarquia está mais clara e estável.
+  - Limite atual: os breadcrumbs continuam visuais e implementados manualmente noutras páginas, pelo que não foi feito rollout global.
+
+- As imagens do blog passaram a usar `next/image`.
+  - Evidência atual:
+    - `src/views/Blog.tsx`
+    - `src/app/blog/[slug]/page.tsx`
+    - `next.config.ts`
+  - Resultado: quick win técnico nas superfícies editoriais com maior potencial SEO.
+  - Limite atual: continuam a existir `<img>` noutros templates institucionais e de serviço.
+
 ## Ainda em aberto
 
 ## Prioridade Alta
 
 ### Técnica
-- Não existe schema markup implementado.
-  - Evidência: sem ocorrências de `application/ld+json` ou `schema` em `src/`.
-  - Impacto: perda de oportunidades de rich results, sobretudo para `LocalBusiness`, `AccountingService` e `FAQPage`.
-
-### On-page
-- O blog não tem páginas de artigo individuais indexáveis.
-  - Evidência: `src/views/Blog.tsx` renderiza apenas cards locais; o botão "Ler mais" não liga para rota nenhuma.
-  - Impacto: o blog não escala autoridade orgânica nem capta tráfego long-tail real.
-
 - O formulário de contactos é apenas simulado no frontend.
   - Evidência: `handleSubmit` em `src/views/Contactos.tsx` faz apenas `setIsSubmitted(true)` e reset local.
   - Impacto: risco de perda de leads orgânicas, mesmo com melhoria de rankings.
@@ -68,17 +130,13 @@ Auditoria viva baseada na codebase atual do projeto em `src/app`, `src/views`, `
 ## Prioridade Média
 
 ### Técnica
-- `sitemap.xml` e `robots.txt` são estáticos.
-  - Evidência: ficheiros em `public/`.
-  - Impacto: manutenção manual, risco de desatualização e ausência de automatização quando surgirem novas páginas.
-
 - O projeto contém código legado de Vite/React Router em paralelo com Next.
   - Evidência: `src/App.tsx`, `src/main.tsx`, `README.md`, `info.md`.
   - Impacto: aumenta ruído operacional e pode gerar decisões erradas em sessões futuras se não for documentado.
 
-- As imagens de conteúdo usam `<img>` remoto sem otimização nativa do Next.
-  - Evidência: múltiplas ocorrências em `src/views/*`.
-  - Impacto: potencial impacto em Core Web Vitals e performance, com influência indireta em SEO.
+- Persistem imagens de conteúdo com `<img>` remoto fora do cluster editorial.
+  - Evidência: múltiplas ocorrências em `src/views/Home.tsx`, `src/views/Sobre.tsx`, `src/views/Contabilidade.tsx`, `src/views/ConsultoriaFiscal.tsx`, `src/views/ConsultoriaGestao.tsx` e `src/views/Incentivos.tsx`.
+  - Impacto: potencial margem adicional de melhoria em Core Web Vitals sem urgência crítica nesta fase.
 
 ### On-page
 - A homepage e várias páginas de serviço têm copy funcional, mas genérica para termos de pesquisa de alta intenção.
@@ -89,14 +147,10 @@ Auditoria viva baseada na codebase atual do projeto em `src/app`, `src/views`, `
   - Estado atual: a página foi melhorada como hub, mas a vigilância de canibalização continua relevante.
   - Impacto: risco de canibalização parcial em queries genéricas de serviços contabilísticos.
 
-- O FAQ tem conteúdo útil e já inclui links contextuais, mas continua sem marcação estruturada.
-  - Evidência: `src/views/FAQ.tsx`.
-  - Impacto: continua a perder oportunidades de rich results.
-
 ### Conteúdos
-- O blog usa conteúdo hardcoded e editorialmente curto.
-  - Evidência: posts embebidos em array em `src/views/Blog.tsx`.
-  - Impacto: baixa profundidade temática e ausência de arquitetura editorial escalável.
+- O blog já tem base editorial funcional, mas a cobertura temática continua curta para os quatro clusters estratégicos.
+  - Evidência: `src/content/blog.ts` contém três artigos publicados e a listagem `/blog` depende ainda deste conjunto inicial.
+  - Impacto: a arquitetura está resolvida, mas o ganho de autoridade topical depende de expansão editorial consistente.
 
 - Algumas páginas institucionais e legais estão relativamente completas, mas não contribuem para reforçar entidades e sinais locais além do mínimo.
   - Exemplos: `Sobre`, `Contactos`, `Política de Privacidade`.
@@ -108,8 +162,8 @@ Auditoria viva baseada na codebase atual do projeto em `src/app`, `src/views`, `
 - Não foi confirmada integração com Google Business Profile, analytics, Search Console ou tag manager.
   - Estado: `Por confirmar`.
 
-- Não foi confirmada geração dinâmica de sitemap ou robots via App Router.
-  - Estado: não implementado de forma visível; `Por confirmar` se existir fora do workspace analisado.
+- Não foi feito rollout global de breadcrumb schema nas páginas institucionais e de serviço.
+  - Estado: adiado conscientemente para evitar marcar templates manuais e potencialmente inconsistentes.
 
 ### Arquitetura e linking
 - O linking interno existe via header, footer, breadcrumbs e CTAs, mas ainda não segue um plano semântico explícito por cluster.
@@ -124,6 +178,8 @@ Auditoria viva baseada na codebase atual do projeto em `src/app`, `src/views`, `
 - O foco local em Vila do Conde está presente na homepage, contactos, FAQ e política de privacidade.
 - Existe metadata dedicada nas páginas principais e legais.
 - Existe helper reutilizável para metadata, reduzindo risco de incoerência futura.
+- Existe schema `AccountingService`, `FAQPage` e `BlogPosting` na camada técnica.
+- Existe `robots.txt` e `sitemap.xml` nativos do App Router.
 
 ## Por confirmar
 - Qual a prioridade comercial entre Vila do Conde, Porto e restante região Norte.

@@ -43,8 +43,11 @@ Esta pasta cobre:
 - As rotas públicas em `src/app/*` reexportam views de `src/views/*`.
 - Existe metadata global em `src/app/layout.tsx`.
 - Existe um helper reutilizável de SEO em `src/lib/seo.ts`.
+- Existe suporte reutilizável para schema e JSON-LD em `src/lib/structured-data.ts` e `src/components/seo/JsonLd.tsx`.
 - Existe metadata específica por rota nas páginas principais e legais em `src/app/**/page.tsx`.
-- Existe `robots.txt` e `sitemap.xml` estáticos em `public/`.
+- O blog usa conteúdo estático local estruturado em `src/content/blog.ts`.
+- Existem páginas individuais de artigo em `src/app/blog/[slug]/page.tsx`, com metadata própria e fallback dedicado.
+- `robots.txt` e `sitemap.xml` são gerados nativamente no App Router em `src/app/robots.ts` e `src/app/sitemap.ts`.
 - Existe código legado de Vite/React Router (`src/App.tsx`, `src/main.tsx`, `README.md`, `info.md`) fora do fluxo principal do Next.
 
 ## Regras de trabalho

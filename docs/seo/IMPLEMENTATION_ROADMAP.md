@@ -36,8 +36,22 @@ Traduzir a estratégia SEO em fases executáveis, incrementais e de baixo risco.
 - Validar consistência legal entre política de cookies e implementação real.
 - Rever formulário de contacto para conversão real.
 
+## Estado da Fase 4
+- Implementado:
+  - schema global `AccountingService`
+  - schema `FAQPage`
+  - schema `BlogPosting` nas páginas de artigo
+  - `BreadcrumbList` nas páginas de artigo, onde a hierarquia é mais estável
+  - `robots.txt` dinâmico via App Router
+  - `sitemap.xml` dinâmico via App Router com páginas principais e artigos
+  - otimização de imagens com `next/image` nas superfícies editoriais do blog
+- Ainda em aberto:
+  - rollout alargado de `next/image` nas restantes views
+  - validação da política de cookies face à implementação real
+  - submissão real do formulário de contactos
+
 ## Sequência recomendada imediata
-1. fechar documentação base
-2. aplicar metadata por rota
-3. validar build
-4. atualizar estado e preparar próxima melhoria de conteúdo
+1. concluir o on-page das páginas `Contabilidade`, `Consultoria Fiscal` e `Incentivos ao Investimento`
+2. ligar essas páginas aos artigos do blog já publicados
+3. validar tratamento real do formulário de contactos e alinhamento legal/cookies
+4. avaliar rollout adicional de performance nas views com `<img>` remanescente
