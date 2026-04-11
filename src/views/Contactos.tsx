@@ -162,8 +162,10 @@ const Contactos = () => {
               Contacte a <span className="text-[#C1272D]">BCA</span>
             </h1>
             <p className="text-xl text-[#666] leading-relaxed">
-              Estamos aqui para ajudar. Entre em contacto connosco através dos 
-              nossos canais de comunicação ou preencha o formulário abaixo.
+              Entre em contacto connosco para pedidos de informação, propostas ou
+              enquadramento de serviços de contabilidade, fiscalidade, gestão e
+              incentivos ao investimento. Estamos em Vila do Conde e trabalhamos
+              com empresas de diferentes setores e dimensões.
             </p>
           </div>
         </div>
@@ -197,15 +199,46 @@ const Contactos = () => {
             <div className="contact-form bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-2xl font-bold text-[#333] mb-2">Envie-nos uma Mensagem</h2>
               <p className="text-[#666] mb-6">
-                Preencha o formulário abaixo e entraremos em contacto consigo brevemente.
+                Use o formulário para pedir informação sobre serviços, esclarecer
+                dúvidas ou iniciar uma conversa sobre a realidade da sua empresa.
               </p>
+
+              <div className="bg-[#F5F5F5] rounded-xl p-5 mb-6">
+                <h3 className="font-bold text-[#333] mb-3">Podemos ajudar com</h3>
+                <ul className="space-y-2 text-sm text-[#666]">
+                  <li>
+                    <Link href="/servicos/contabilidade" className="text-[#C1272D] hover:underline">
+                      Contabilidade para empresas
+                    </Link>{' '}
+                    e acompanhamento regular de obrigações
+                  </li>
+                  <li>
+                    <Link href="/servicos/consultoria-fiscal" className="text-[#C1272D] hover:underline">
+                      Consultoria fiscal
+                    </Link>{' '}
+                    e enquadramento declarativo
+                  </li>
+                  <li>
+                    <Link href="/servicos/consultoria-de-gestao" className="text-[#C1272D] hover:underline">
+                      Apoio à gestão
+                    </Link>{' '}
+                    e análise para decisão
+                  </li>
+                  <li>
+                    Perguntas frequentes sobre serviços e processo em{' '}
+                    <Link href="/faq" className="text-[#C1272D] hover:underline">
+                      FAQ
+                    </Link>
+                  </li>
+                </ul>
+              </div>
 
               {isSubmitted ? (
                 <div className="bg-green-50 border border-green-200 rounded-xl p-6 text-center">
                   <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-green-700 mb-2">Mensagem Enviada!</h3>
+                  <h3 className="text-xl font-bold text-green-700 mb-2">Contacto Registado</h3>
                   <p className="text-green-600">
-                    Obrigado pelo seu contacto. Responderemos o mais brevemente possível.
+                    Obrigado pelo seu contacto. A sua mensagem foi registada com sucesso.
                   </p>
                 </div>
               ) : (
@@ -316,8 +349,15 @@ const Contactos = () => {
           <div className="bg-gradient-to-br from-[#C1272D] to-[#8B1A1F] rounded-2xl p-8 lg:p-12 text-center text-white">
             <h2 className="text-3xl font-bold mb-4">Siga-nos nas Redes Sociais</h2>
             <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-              Mantenha-se atualizado sobre as novidades, dicas fiscais e 
-              informações úteis para o seu negócio.
+              Se preferir começar por explorar os nossos serviços, consulte também
+              as páginas de{' '}
+              <Link href="/servicos" className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white">
+                Serviços
+              </Link>{' '}
+              e{' '}
+              <Link href="/faq" className="text-white underline decoration-white/40 underline-offset-4 hover:decoration-white">
+                FAQ
+              </Link>.
             </p>
             <div className="flex justify-center gap-4">
               <a

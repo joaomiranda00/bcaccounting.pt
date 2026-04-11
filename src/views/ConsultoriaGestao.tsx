@@ -82,42 +82,42 @@ const ConsultoriaGestao = () => {
     {
       icon: Target,
       title: 'Planeamento Estratégico',
-      description: 'Definição de objetivos, estratégias e planos de ação para o crescimento sustentável do negócio.',
+      description: 'Definição de prioridades, objetivos e ações para crescer com mais foco e menos improvisação.',
     },
     {
       icon: Settings,
       title: 'Organização Empresarial',
-      description: 'Otimização de processos, estruturas e fluxos de trabalho para maior eficiência operacional.',
+      description: 'Revisão de processos, responsabilidades e rotinas para reduzir falhas e ganhar eficiência operacional.',
     },
     {
       icon: BarChart3,
       title: 'Controlo de Gestão',
-      description: 'Implementação de sistemas de monitorização e avaliação de performance empresarial.',
+      description: 'Acompanhamento regular de indicadores, desvios e resultados para apoiar decisões com base em números.',
     },
     {
       icon: PieChart,
       title: 'Análise Financeira',
-      description: 'Interpretação de indicadores financeiros para tomada de decisões informadas.',
+      description: 'Leitura de margens, custos, tesouraria e rentabilidade para perceber onde atuar primeiro.',
     },
     {
       icon: TrendingUp,
       title: 'Gestão de Custos',
-      description: 'Identificação e otimização de custos para melhorar a rentabilidade do negócio.',
+      description: 'Identificação de custos críticos e oportunidades de melhoria na estrutura financeira da empresa.',
     },
     {
       icon: Users,
       title: 'Gestão de Recursos Humanos',
-      description: 'Apoio na gestão da equipa, desde recrutamento até avaliação de performance.',
+      description: 'Apoio na organização da equipa, definição de funções e acompanhamento da performance operacional.',
     },
   ];
 
   const benefits = [
-    'Tomada de decisões baseada em dados concretos',
-    'Maior eficiência operacional e redução de desperdícios',
-    'Melhoria da rentabilidade e competitividade',
-    'Planeamento estratégico alinhado aos objetivos',
-    'Identificação de oportunidades de crescimento',
-    'Antecipação de problemas e gestão de riscos',
+    'Tomada de decisões com base em indicadores e não apenas em perceções',
+    'Maior controlo sobre custos, margens e rentabilidade',
+    'Melhoria da organização operacional e das prioridades da equipa',
+    'Planeamento mais claro para crescimento sustentado',
+    'Identificação antecipada de desvios e oportunidades de melhoria',
+    'Acompanhamento mais útil para empresários e equipas de direção',
   ];
 
   const targetAudience = [
@@ -149,9 +149,9 @@ const ConsultoriaGestao = () => {
               Consultoria de <span className="text-[#C1272D]">Gestão</span>
             </h1>
             <p className="text-xl text-[#666] leading-relaxed">
-              Apoio estratégico na tomada de decisões, planeamento e controlo 
-              para o crescimento sustentável do seu negócio, com soluções 
-              personalizadas às necessidades específicas da sua empresa.
+              Ajudamos PME e empresas em crescimento a tomar melhores decisões,
+              acompanhar indicadores, organizar processos e planear com mais
+              clareza financeira e operacional.
             </p>
           </div>
         </div>
@@ -165,7 +165,8 @@ const ConsultoriaGestao = () => {
             <div className="text-center max-w-2xl mx-auto mb-16">
               <h2 className="section-title">Áreas de Consultoria</h2>
               <p className="section-subtitle">
-                Soluções integradas para melhorar a gestão da sua empresa
+                Áreas de trabalho pensadas para melhorar controlo, organização e
+                capacidade de decisão
               </p>
             </div>
             <div className="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -192,10 +193,11 @@ const ConsultoriaGestao = () => {
               <div>
                 <h2 className="section-title">Benefícios da Consultoria de Gestão</h2>
                 <p className="text-[#666] leading-relaxed mb-8">
-                  A consultoria de gestão permite às empresas beneficiar de uma 
-                  visão externa e especializada, identificando oportunidades de 
-                  melhoria e implementando soluções práticas que geram resultados 
-                  mensuráveis.
+                  A consultoria de gestão é especialmente útil quando a empresa
+                  precisa de transformar números e operação em decisões concretas.
+                  O objetivo não é apenas analisar: é perceber prioridades,
+                  acompanhar desempenho e agir sobre o que afeta crescimento,
+                  rentabilidade e organização interna.
                 </p>
                 <ul className="space-y-4">
                   {benefits.map((benefit, index) => (
@@ -238,10 +240,10 @@ const ConsultoriaGestao = () => {
                 </div>
                 <h2 className="section-title">Para Quem é Destinado</h2>
                 <p className="text-[#666] leading-relaxed mb-8">
-                  A nossa consultoria de gestão destina-se a empresas de todos 
-                  os setores e dimensões que pretendem melhorar a sua performance, 
-                  quer estejam em fase de crescimento, reestruturação ou 
-                  profissionalização.
+                  Este serviço faz sentido para empresas que precisam de mais
+                  controlo sobre a operação, apoio à decisão e planeamento para
+                  crescer de forma sustentada, sobretudo quando já existe volume
+                  suficiente para exigir leitura regular de indicadores.
                 </p>
                 <ul className="space-y-4">
                   {targetAudience.map((item, index) => (
@@ -262,7 +264,7 @@ const ConsultoriaGestao = () => {
             <div className="text-center max-w-2xl mx-auto mb-16">
               <h2 className="section-title">A Nossa Metodologia</h2>
               <p className="section-subtitle">
-                Um processo estruturado para garantir resultados efetivos
+                Um processo simples para diagnosticar, priorizar e acompanhar a execução
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -297,6 +299,22 @@ const ConsultoriaGestao = () => {
                 </div>
               ))}
             </div>
+
+            <div className="max-w-3xl mx-auto mt-12 text-center text-[#666] leading-relaxed">
+              <p>
+                Quando a necessidade principal é cumprir obrigações contabilísticas
+                ou fiscais, recomendamos começar pelos nossos serviços de{' '}
+                <Link href="/servicos/contabilidade" className="text-[#C1272D] hover:underline">
+                  Contabilidade
+                </Link>{' '}
+                ou{' '}
+                <Link href="/servicos/consultoria-fiscal" className="text-[#C1272D] hover:underline">
+                  Consultoria Fiscal
+                </Link>.
+                Quando o desafio está em decidir melhor, acompanhar resultados e
+                organizar o crescimento, a consultoria de gestão torna-se o serviço mais adequado.
+              </p>
+            </div>
           </div>
         </section>
       </div>
@@ -308,8 +326,8 @@ const ConsultoriaGestao = () => {
             Quer Melhorar a Gestão da Sua Empresa?
           </h2>
           <p className="text-xl text-white/80 mb-8">
-            Contacte-nos para uma reunião de diagnóstico e descubra como 
-            podemos ajudar o seu negócio a crescer.
+            Fale connosco para perceber como a sua empresa pode ganhar mais
+            controlo, melhor informação de gestão e apoio à decisão.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/contactos" className="btn-white">

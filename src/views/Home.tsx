@@ -111,24 +111,22 @@ const HeroSection = () => {
       <div ref={contentRef} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-3xl">
           <div className="hero-eyebrow inline-block px-4 py-2 bg-[#C1272D]/10 text-[#C1272D] text-sm font-medium rounded-full mb-6">
-            BCA - Business Consulting and Accounting
+            Contabilidade e consultoria para empresas em Vila do Conde
           </div>
 
           <h1 className="hero-title text-4xl sm:text-5xl lg:text-6xl font-bold text-[#333] leading-tight mb-6">
-            <span className="inline-block">Soluções</span>{' '}
-            <span className="inline-block">Contabilísticas</span>{' '}
-            <span className="inline-block">e de</span>{' '}
+            <span className="inline-block">Contabilidade,</span>{' '}
+            <span className="inline-block">Fiscalidade</span>{' '}
+            <span className="inline-block">e Apoio à</span>{' '}
             <span className="inline-block text-[#C1272D]">Gestão</span>{' '}
-            <span className="inline-block">para o</span>{' '}
-            <span className="inline-block">Sucesso</span>{' '}
-            <span className="inline-block">do seu</span>{' '}
-            <span className="inline-block">Negócio</span>
+            <span className="inline-block">para</span>{' '}
+            <span className="inline-block">Empresas</span>
           </h1>
 
           <p className="hero-subtitle text-lg sm:text-xl text-[#666] mb-10 max-w-2xl leading-relaxed">
-            Serviços profissionais de contabilidade, consultoria fiscal e apoio à 
-            gestão em Vila do Conde. Acompanhamos o crescimento da sua empresa 
-            com soluções personalizadas.
+            Apoiamos PME, sociedades e empresários com serviços de contabilidade,
+            consultoria fiscal, apoio à gestão e incentivos ao investimento, com
+            acompanhamento próximo a partir de Vila do Conde.
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -137,8 +135,25 @@ const HeroSection = () => {
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
             <Link href="/servicos" className="hero-cta btn-secondary text-base">
-              Conheça os Nossos Serviços
+              Ver Serviços para Empresas
             </Link>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-3 text-sm">
+            {[
+              { label: 'Contabilidade', path: '/servicos/contabilidade' },
+              { label: 'Consultoria Fiscal', path: '/servicos/consultoria-fiscal' },
+              { label: 'Consultoria de Gestão', path: '/servicos/consultoria-de-gestao' },
+              { label: 'Incentivos ao Investimento', path: '/servicos/incentivos-ao-investimento' },
+            ].map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+                className="hero-cta inline-flex items-center rounded-full border border-[#E0E0E0] bg-white px-4 py-2 text-[#666] transition-colors duration-300 hover:border-[#C1272D] hover:text-[#C1272D]"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
@@ -186,25 +201,25 @@ const ServicesSection = () => {
     {
       icon: Calculator,
       title: 'Contabilidade',
-      description: 'Gestão contabilística completa para empresas, com acompanhamento técnico e cumprimento de obrigações legais.',
+      description: 'Organização contabilística, cumprimento legal e acompanhamento regular para empresas que precisam de informação fiável.',
       path: '/servicos/contabilidade',
     },
     {
       icon: TrendingUp,
       title: 'Consultoria Fiscal',
-      description: 'Otimização fiscal e cumprimento de obrigações declarativas para minimizar riscos e maximizar eficiência.',
+      description: 'Planeamento fiscal, enquadramento e apoio declarativo para reduzir risco e apoiar decisões com segurança.',
       path: '/servicos/consultoria-fiscal',
     },
     {
       icon: Lightbulb,
       title: 'Consultoria de Gestão',
-      description: 'Apoio estratégico na tomada de decisões, planeamento e controlo para o crescimento sustentável.',
+      description: 'Apoio à decisão, controlo de gestão e análise financeira para empresas que querem crescer com mais controlo.',
       path: '/servicos/consultoria-de-gestao',
     },
     {
       icon: Trophy,
       title: 'Incentivos ao Investimento',
-      description: 'Candidaturas a fundos europeus e incentivos nacionais para impulsionar o seu negócio.',
+      description: 'Apoio à identificação de programas, preparação de candidaturas e acompanhamento de incentivos ao investimento.',
       path: '/servicos/incentivos-ao-investimento',
     },
   ];
@@ -220,8 +235,8 @@ const ServicesSection = () => {
         >
           <h2 className="section-title">Os Nossos Serviços</h2>
           <p className="section-subtitle">
-            Soluções completas para o crescimento da sua empresa, 
-            com profissionalismo e dedicação.
+            Da contabilidade ao apoio à decisão, ajudamos empresas a responder a
+            necessidades operacionais, fiscais e de crescimento.
           </p>
         </div>
 
@@ -321,22 +336,22 @@ const AboutSection = () => {
           <div className="about-content">
             <h2 className="section-title">Porquê Escolher a BCA?</h2>
             <p className="text-[#666] leading-relaxed mb-6">
-              Com anos de experiência em contabilidade e consultoria de gestão, 
-              a BCA acompanha empresas de todos os setores, oferecendo soluções 
-              personalizadas e um atendimento próximo.
+              A BCA trabalha com empresas que precisam de manter a contabilidade
+              organizada, cumprir obrigações fiscais e tomar decisões com base
+              em informação financeira clara.
             </p>
             <p className="text-[#666] leading-relaxed mb-8">
-              A nossa equipa de profissionais qualificados está comprometida em 
-              ajudar o seu negócio a crescer, garantindo o cumprimento de todas 
-              as obrigações legais e otimizando a gestão financeira.
+              Combinamos acompanhamento próximo, leitura prática dos números do
+              negócio e articulação entre contabilidade, fiscalidade, gestão e
+              incentivos ao investimento, com presença em Vila do Conde.
             </p>
 
             <ul className="space-y-4 mb-8">
               {[
-                'Equipa experiente e qualificada',
-                'Atendimento personalizado',
-                'Soluções adaptadas ao seu negócio',
-                'Acompanhamento contínuo',
+                'Cumprimento contabilístico e fiscal com acompanhamento regular',
+                'Informação de gestão útil para decidir com mais segurança',
+                'Contacto próximo e conhecimento do contexto empresarial local',
+                'Articulação entre serviços para evitar decisões isoladas',
               ].map((item, index) => (
                 <li key={index} className="flex items-center gap-3">
                   <CheckCircle className="w-5 h-5 text-[#C1272D] flex-shrink-0" />
@@ -345,8 +360,17 @@ const AboutSection = () => {
               ))}
             </ul>
 
+            <div className="mb-8 rounded-xl border border-[#E0E0E0] bg-white p-5">
+              <h3 className="text-lg font-bold text-[#333] mb-2">Apoiamos empresas em diferentes fases</h3>
+              <p className="text-[#666] text-sm leading-relaxed">
+                Trabalhamos com PME, sociedades comerciais, empresários em nome
+                individual e novos projetos que procuram um parceiro estável para
+                organizar a operação financeira e apoiar o crescimento.
+              </p>
+            </div>
+
             <Link href="/sobre" className="btn-primary">
-              Conheça a Nossa Equipa
+              Conheça Melhor a BCA
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
           </div>
@@ -444,9 +468,9 @@ const IncentivesSection = () => {
               Maximize as oportunidades de financiamento para o seu negócio
             </p>
             <p className="text-white/70 leading-relaxed mb-8">
-              Ajudamos empresas a candidatarem-se a fundos europeus e incentivos 
-              nacionais, acompanhando todo o processo desde a identificação da 
-              oportunidade até à aprovação.
+              Ajudamos empresas a identificar programas adequados, preparar
+              candidaturas e acompanhar cada etapa do processo, desde o
+              enquadramento inicial até à submissão.
             </p>
 
             <ul className="space-y-4 mb-8">
@@ -790,11 +814,12 @@ const CTASection = () => {
             Pronto a Crescer o Seu Negócio?
           </h2>
           <p className="text-xl text-white/80 mb-8">
-            Entre em contacto connosco e descubra como podemos ajudar
+            Se procura contabilidade, apoio fiscal, gestão ou incentivos ao
+            investimento, fale connosco e enquadre a melhor solução para a sua empresa.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/contactos" className="btn-white animate-pulse-soft">
-              Marque uma Reunião
+              Pedir Reunião
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
             <a href="tel:252642059" className="btn-secondary border-white text-white hover:bg-white hover:text-[#C1272D]">

@@ -83,7 +83,7 @@ const Servicos = () => {
     {
       icon: Calculator,
       title: 'Contabilidade',
-      description: 'Gestão contabilística completa para empresas de todos os setores, garantindo o cumprimento de todas as obrigações legais.',
+      description: 'Serviço regular para empresas que precisam de contabilidade organizada, obrigações em dia e acompanhamento técnico próximo.',
       features: [
         'Organização contabilística',
         'Elaboração de declarações fiscais',
@@ -96,7 +96,7 @@ const Servicos = () => {
     {
       icon: TrendingUp,
       title: 'Consultoria Fiscal',
-      description: 'Otimização fiscal e cumprimento de obrigações declarativas para minimizar riscos e maximizar eficiência.',
+      description: 'Apoio fiscal para empresas que precisam de enquadramento, planeamento e acompanhamento declarativo com menor exposição ao risco.',
       features: [
         'Planeamento fiscal',
         'Enquadramento fiscal',
@@ -109,7 +109,7 @@ const Servicos = () => {
     {
       icon: Lightbulb,
       title: 'Consultoria de Gestão',
-      description: 'Apoio estratégico na tomada de decisões, planeamento e controlo para o crescimento sustentável.',
+      description: 'Apoio à decisão, controlo de gestão e planeamento para empresas que querem melhorar resultados e organização.',
       features: [
         'Planeamento estratégico',
         'Organização empresarial',
@@ -122,7 +122,7 @@ const Servicos = () => {
     {
       icon: Trophy,
       title: 'Incentivos ao Investimento',
-      description: 'Candidaturas a fundos europeus e incentivos nacionais para impulsionar o seu negócio.',
+      description: 'Acompanhamento de candidaturas a incentivos e fundos para empresas com projetos de investimento, inovação ou crescimento.',
       features: [
         'Identificação de oportunidades',
         'Análise de enquadramento',
@@ -138,17 +138,17 @@ const Servicos = () => {
     {
       icon: FileText,
       title: 'Relatórios Personalizados',
-      description: 'Informação clara e objetiva para acompanhar a performance do seu negócio.',
+      description: 'Informação prática para acompanhar números, prioridades e evolução da empresa.',
     },
     {
       icon: BarChart3,
       title: 'Análise de Dados',
-      description: 'Interpretação de indicadores para tomada de decisões informadas.',
+      description: 'Leitura de indicadores para apoiar decisões operacionais e estratégicas.',
     },
     {
       icon: Users,
       title: 'Atendimento Dedicado',
-      description: 'Acompanhamento personalizado por um gestor de conta dedicado.',
+      description: 'Contacto próximo para esclarecer dúvidas e enquadrar necessidades reais do negócio.',
     },
     {
       icon: Building2,
@@ -182,9 +182,16 @@ const Servicos = () => {
               Os Nossos <span className="text-[#C1272D]">Serviços</span>
             </h1>
             <p className="text-xl text-[#666] leading-relaxed">
-              Oferecemos um conjunto integrado de serviços de contabilidade, 
-              consultoria fiscal e de gestão, adaptados às necessidades específicas 
-              de cada empresa.
+              Esta página funciona como ponto de entrada para os principais
+              serviços da BCA. Aqui pode perceber que tipo de apoio faz mais
+              sentido para a sua empresa, consoante a necessidade seja
+              contabilística, fiscal, de gestão ou de investimento.
+            </p>
+            <p className="text-base text-[#666] leading-relaxed mt-6 max-w-2xl">
+              Se precisa de manter obrigações em dia, clarificar o enquadramento
+              fiscal, apoiar decisões de gestão ou preparar candidaturas a
+              incentivos, use este hub para identificar a página certa antes de
+              avançar para contacto.
             </p>
           </div>
         </div>
@@ -193,6 +200,40 @@ const Servicos = () => {
       {/* Services Grid */}
       <section className="services-grid py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+            {[
+              {
+                title: 'Precisa de apoio contabilístico regular?',
+                description: 'Veja o serviço de Contabilidade para organização contabilística, obrigações e acompanhamento recorrente.',
+                path: '/servicos/contabilidade',
+              },
+              {
+                title: 'Tem dúvidas de enquadramento ou risco fiscal?',
+                description: 'Consulte a página de Consultoria Fiscal para perceber quando precisa de planeamento ou apoio declarativo.',
+                path: '/servicos/consultoria-fiscal',
+              },
+              {
+                title: 'Quer decidir melhor e acompanhar indicadores?',
+                description: 'Explore a Consultoria de Gestão para controlo de gestão, análise financeira e planeamento.',
+                path: '/servicos/consultoria-de-gestao',
+              },
+              {
+                title: 'Vai investir, crescer ou candidatar-se a incentivos?',
+                description: 'Conheça o apoio da BCA em Incentivos ao Investimento e candidaturas a programas relevantes.',
+                path: '/servicos/incentivos-ao-investimento',
+              },
+            ].map((item) => (
+              <Link
+                key={item.path}
+                href={item.path}
+                className="rounded-xl border border-[#E0E0E0] bg-[#F9F9F9] p-5 transition-colors duration-300 hover:border-[#C1272D] hover:bg-white"
+              >
+                <h2 className="text-lg font-bold text-[#333] mb-2">{item.title}</h2>
+                <p className="text-sm text-[#666] leading-relaxed">{item.description}</p>
+              </Link>
+            ))}
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {services.map((service) => (
               <Link
@@ -240,7 +281,8 @@ const Servicos = () => {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="section-title">Vantagens de Trabalhar Connosco</h2>
             <p className="section-subtitle">
-              Descubra porque somos a escolha certa para o seu negócio
+              Uma abordagem integrada para empresas que precisam de apoio técnico
+              e informação útil para agir
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -267,12 +309,12 @@ const Servicos = () => {
             Precisa de Ajuda para Escolher?
           </h2>
           <p className="text-xl text-white/80 mb-8">
-            Contacte-nos para uma consulta gratuita e descubra quais os serviços 
-            mais adequados às necessidades da sua empresa.
+            Fale connosco para enquadrar os serviços mais adequados às
+            necessidades da sua empresa e perceber por onde começar.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/contactos" className="btn-white">
-              Marque uma Consulta
+              Pedir Orientação
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
             <a href="tel:252642059" className="btn-secondary border-white text-white hover:bg-white hover:text-[#C1272D]">

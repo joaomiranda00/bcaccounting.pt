@@ -3,12 +3,37 @@ import type { ReactNode } from 'react';
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { SITE_NAME, SITE_URL } from '@/lib/seo';
 import '../index.css';
 
 export const metadata: Metadata = {
-  title: 'BCA - Business Consulting and Accounting',
+  metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
+  title: 'BCA | Contabilidade e Consultoria em Vila do Conde',
   description:
-    'Serviços profissionais de contabilidade, consultoria fiscal e apoio à gestão em Vila do Conde.',
+    'Serviços de contabilidade, consultoria fiscal, consultoria de gestão e incentivos ao investimento em Vila do Conde.',
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: 'BCA | Contabilidade e Consultoria em Vila do Conde',
+    description:
+      'Serviços de contabilidade, consultoria fiscal, consultoria de gestão e incentivos ao investimento em Vila do Conde.',
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    locale: 'pt_PT',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'BCA | Contabilidade e Consultoria em Vila do Conde',
+    description:
+      'Serviços de contabilidade, consultoria fiscal, consultoria de gestão e incentivos ao investimento em Vila do Conde.',
+  },
 };
 
 export default function RootLayout({

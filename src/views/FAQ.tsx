@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
@@ -8,9 +8,17 @@ import { ChevronDown, Search, MessageCircle } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
+type FaqItem = {
+  id: string;
+  question: string;
+  answer: ReactNode;
+  answerText: string;
+  category: string;
+};
+
 const FAQ = () => {
   const pageRef = useRef<HTMLDivElement>(null);
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -52,55 +60,157 @@ const FAQ = () => {
     return () => ctx.revert();
   }, []);
 
-  const faqs = [
+  const faqs: FaqItem[] = [
     {
+      id: 'contabilidade-servicos',
       question: 'Que serviços de contabilidade prestam?',
-      answer: 'Prestamos um serviço completo de contabilidade que inclui: organização contabilística, elaboração de declarações fiscais (IVA, IRC, IRS, Modelo 22), processamento de salários, relatórios de gestão, cumprimento de obrigações legais e apoio contínuo ao cliente.',
+      answerText:
+        'Prestamos um serviço completo de contabilidade que inclui organização contabilística, elaboração de declarações fiscais, processamento de salários, relatórios de gestão, cumprimento de obrigações legais e apoio contínuo ao cliente.',
+      answer: (
+        <>
+          Prestamos um serviço completo de{' '}
+          <Link href="/servicos/contabilidade" className="text-[#C1272D] hover:underline">
+            contabilidade
+          </Link>{' '}
+          que inclui organização contabilística, elaboração de declarações fiscais
+          (IVA, IRC, IRS, Modelo 22), processamento de salários, relatórios de
+          gestão, cumprimento de obrigações legais e apoio contínuo ao cliente.
+        </>
+      ),
       category: 'Contabilidade',
     },
     {
+      id: 'trabalham-apenas-com-empresas',
       question: 'Trabalham apenas com empresas?',
-      answer: 'Sim, a BCA trabalha principalmente com empresas de todos os setores e dimensões. Acompanhamos micro, pequenas e médias empresas, sociedades comerciais, empresários em nome individual e profissionais liberais.',
+      answerText:
+        'Sim, a BCA trabalha principalmente com empresas de todos os setores e dimensões. Acompanhamos micro, pequenas e médias empresas, sociedades comerciais, empresários em nome individual e profissionais liberais.',
+      answer:
+        'Sim, a BCA trabalha principalmente com empresas de todos os setores e dimensões. Acompanhamos micro, pequenas e médias empresas, sociedades comerciais, empresários em nome individual e profissionais liberais.',
       category: 'Geral',
     },
     {
+      id: 'fundos-europeus',
       question: 'Apoiam candidaturas a fundos europeus?',
-      answer: 'Sim, temos uma área especializada em incentivos ao investimento. Ajudamos empresas a identificar oportunidades de financiamento, preparar candidaturas a fundos europeus (Portugal 2030, PRR) e incentivos nacionais, acompanhando todo o processo desde a identificação até ao pagamento.',
+      answerText:
+        'Sim, temos uma área especializada em incentivos ao investimento. Ajudamos empresas a identificar oportunidades de financiamento, preparar candidaturas a fundos europeus e incentivos nacionais, acompanhando todo o processo desde a identificação até ao pagamento.',
+      answer: (
+        <>
+          Sim, temos uma área especializada em{' '}
+          <Link href="/servicos/incentivos-ao-investimento" className="text-[#C1272D] hover:underline">
+            incentivos ao investimento
+          </Link>.
+          Ajudamos empresas a identificar oportunidades de financiamento,
+          preparar candidaturas a fundos europeus (Portugal 2030, PRR) e
+          incentivos nacionais, acompanhando todo o processo desde a
+          identificação até ao pagamento.
+        </>
+      ),
       category: 'Incentivos',
     },
     {
+      id: 'apoio-fiscal-continuo',
       question: 'A BCA presta apoio fiscal contínuo?',
-      answer: 'Sim, oferecemos consultoria fiscal contínua que inclui: planeamento fiscal, enquadramento fiscal adequado, acompanhamento declarativo, redução de riscos fiscais, defesa em inspeções tributárias e regularização de situações pendentes.',
+      answerText:
+        'Sim, oferecemos consultoria fiscal contínua que inclui planeamento fiscal, enquadramento fiscal adequado, acompanhamento declarativo, redução de riscos fiscais, defesa em inspeções tributárias e regularização de situações pendentes.',
+      answer: (
+        <>
+          Sim, oferecemos{' '}
+          <Link href="/servicos/consultoria-fiscal" className="text-[#C1272D] hover:underline">
+            consultoria fiscal
+          </Link>{' '}
+          contínua que inclui planeamento fiscal, enquadramento fiscal adequado,
+          acompanhamento declarativo, redução de riscos fiscais, defesa em
+          inspeções tributárias e regularização de situações pendentes.
+        </>
+      ),
       category: 'Fiscalidade',
     },
     {
+      id: 'onde-estao-localizados',
       question: 'Onde estão localizados?',
-      answer: 'Estamos localizados em Vila do Conde, no Edifício Alameda, Sala 3, 1.º Andar, Avenida Dr. João Canavarro, n.º 305, 4480-668 Vila do Conde. O nosso horário de atendimento é de segunda a sexta, das 9h às 18h.',
+      answerText:
+        'Estamos localizados em Vila do Conde, no Edifício Alameda, Sala 3, 1.º Andar, Avenida Dr. João Canavarro, n.º 305, 4480-668 Vila do Conde. O nosso horário de atendimento é de segunda a sexta, das 9h às 18h.',
+      answer: (
+        <>
+          Estamos localizados em Vila do Conde, no Edifício Alameda, Sala 3,
+          1.º Andar, Avenida Dr. João Canavarro, n.º 305, 4480-668 Vila do
+          Conde. Pode consultar todos os detalhes na página de{' '}
+          <Link href="/contactos" className="text-[#C1272D] hover:underline">
+            Contactos
+          </Link>.
+        </>
+      ),
       category: 'Contactos',
     },
     {
+      id: 'empresas-fora-vila-do-conde',
       question: 'Trabalham com empresas fora de Vila do Conde?',
-      answer: 'Sim, embora a nossa sede seja em Vila do Conde, trabalhamos com empresas de toda a região do Porto e de outras zonas do país. Graças às tecnologias de comunicação, podemos prestar um serviço de excelência independentemente da localização geográfica.',
+      answerText:
+        'Sim, embora a nossa sede seja em Vila do Conde, trabalhamos com empresas de toda a região do Porto e de outras zonas do país. Graças às tecnologias de comunicação, podemos prestar um serviço de excelência independentemente da localização geográfica.',
+      answer:
+        'Sim, embora a nossa sede seja em Vila do Conde, trabalhamos com empresas de toda a região do Porto e de outras zonas do país. Graças às tecnologias de comunicação, podemos prestar um serviço de excelência independentemente da localização geográfica.',
       category: 'Geral',
     },
     {
+      id: 'prazo-irs',
       question: 'Qual é o prazo para entregar a declaração de IRS?',
-      answer: 'O prazo para entrega da declaração de IRS varia todos os anos, mas geralmente é entre abril e junho. Aconselhamos a entrega atempada para evitar coimas. A BCA acompanha todos os prazos e alerta os clientes com antecedência.',
+      answerText:
+        'O prazo para entrega da declaração de IRS varia todos os anos, mas geralmente é entre abril e junho. Aconselhamos a entrega atempada para evitar coimas. A BCA acompanha todos os prazos e alerta os clientes com antecedência.',
+      answer:
+        'O prazo para entrega da declaração de IRS varia todos os anos, mas geralmente é entre abril e junho. Aconselhamos a entrega atempada para evitar coimas. A BCA acompanha todos os prazos e alerta os clientes com antecedência.',
       category: 'Fiscalidade',
     },
     {
+      id: 'mudar-de-contabilista',
       question: 'Como posso mudar de contabilista?',
-      answer: 'Mudar de contabilista é um processo simples. Basta contactar-nos e nós tratamos de toda a transição, incluindo a comunicação às finanças e a transferência da documentação necessária. Garantimos uma mudança suave sem interrupções no serviço.',
+      answerText:
+        'Mudar de contabilista é um processo simples. Basta contactar-nos e nós tratamos de toda a transição, incluindo a comunicação às finanças e a transferência da documentação necessária. Garantimos uma mudança suave sem interrupções no serviço.',
+      answer: (
+        <>
+          Mudar de contabilista é um processo simples. Basta{' '}
+          <Link href="/contactos" className="text-[#C1272D] hover:underline">
+            contactar-nos
+          </Link>{' '}
+          e nós tratamos da transição, incluindo a comunicação às finanças e a
+          transferência da documentação necessária.
+        </>
+      ),
       category: 'Geral',
     },
     {
+      id: 'valores-servico',
       question: 'Quais são os vossos valores de serviço?',
-      answer: 'Os nossos valores dependem do volume de trabalho, dimensão da empresa e serviços contratados. Fazemos orçamentos personalizados sem compromisso. Contacte-nos para uma avaliação das suas necessidades e receba uma proposta adequada.',
+      answerText:
+        'Os nossos valores dependem do volume de trabalho, dimensão da empresa e serviços contratados. Fazemos orçamentos personalizados sem compromisso. Contacte-nos para uma avaliação das suas necessidades e receba uma proposta adequada.',
+      answer: (
+        <>
+          Os nossos valores dependem do volume de trabalho, dimensão da empresa
+          e serviços contratados. Fazemos orçamentos personalizados. Use a
+          página de{' '}
+          <Link href="/contactos" className="text-[#C1272D] hover:underline">
+            Contactos
+          </Link>{' '}
+          para nos enviar o seu pedido e receber um enquadramento adequado.
+        </>
+      ),
       category: 'Geral',
     },
     {
+      id: 'consultoria-gestao',
       question: 'Oferecem serviços de consultoria de gestão?',
-      answer: 'Sim, além dos serviços contabilísticos e fiscais, oferecemos consultoria de gestão que inclui: planeamento estratégico, organização empresarial, controlo de gestão, análise financeira, gestão de custos e apoio na tomada de decisões.',
+      answerText:
+        'Sim, além dos serviços contabilísticos e fiscais, oferecemos consultoria de gestão que inclui planeamento estratégico, organização empresarial, controlo de gestão, análise financeira, gestão de custos e apoio na tomada de decisões.',
+      answer: (
+        <>
+          Sim, além dos serviços contabilísticos e fiscais, oferecemos{' '}
+          <Link href="/servicos/consultoria-de-gestao" className="text-[#C1272D] hover:underline">
+            consultoria de gestão
+          </Link>{' '}
+          com foco em planeamento estratégico, organização empresarial,
+          controlo de gestão, análise financeira, gestão de custos e apoio à
+          decisão.
+        </>
+      ),
       category: 'Gestão',
     },
   ];
@@ -108,10 +218,11 @@ const FAQ = () => {
   const filteredFaqs = faqs.filter(
     (faq) =>
       faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      faq.answer.toLowerCase().includes(searchTerm.toLowerCase())
+      faq.answerText.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      faq.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const categories = [...new Set(faqs.map((faq) => faq.category))];
+  const categories = ['Contabilidade', 'Fiscalidade', 'Gestão', 'Incentivos', 'Contactos', 'Geral'];
 
   return (
     <div ref={pageRef} className="pt-20">
@@ -131,7 +242,9 @@ const FAQ = () => {
               Perguntas <span className="text-[#C1272D]">Frequentes</span>
             </h1>
             <p className="text-xl text-[#666] leading-relaxed mb-8">
-              Encontre respostas para as questões mais comuns sobre os nossos serviços.
+              Encontre respostas para as dúvidas mais frequentes sobre
+              contabilidade, fiscalidade, apoio à gestão, incentivos ao
+              investimento e contacto com a BCA.
             </p>
 
             {/* Search */}
@@ -152,6 +265,11 @@ const FAQ = () => {
       {/* FAQ List */}
       <section className="faq-list py-24 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-[#666] leading-relaxed mb-8">
+            As perguntas estão agrupadas por tema para facilitar a navegação e
+            preparar esta página para futura estruturação semântica adicional.
+          </p>
+
           {/* Categories */}
           <div className="flex flex-wrap justify-center gap-2 mb-12">
             <button
@@ -182,28 +300,28 @@ const FAQ = () => {
           {/* Questions */}
           <div className="space-y-4">
             {filteredFaqs.length > 0 ? (
-              filteredFaqs.map((faq, index) => (
+              filteredFaqs.map((faq) => (
                 <div
-                  key={index}
+                  key={faq.id}
                   className="faq-item bg-[#F5F5F5] rounded-xl overflow-hidden"
                 >
                   <button
-                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    onClick={() => setOpenIndex(openIndex === faq.id ? null : faq.id)}
                     className="w-full flex items-center justify-between p-6 text-left"
                   >
                     <span className="font-medium text-[#333] pr-4">{faq.question}</span>
                     <ChevronDown
                       className={`w-5 h-5 text-[#C1272D] flex-shrink-0 transition-transform duration-300 ${
-                        openIndex === index ? 'rotate-180' : ''
+                        openIndex === faq.id ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
                   <div
                     className={`overflow-hidden transition-all duration-300 ${
-                      openIndex === index ? 'max-h-96' : 'max-h-0'
+                      openIndex === faq.id ? 'max-h-[32rem]' : 'max-h-0'
                     }`}
                   >
-                    <div className="px-6 pb-6 text-[#666] leading-relaxed">
+                    <div className="px-6 pb-6 text-[#666] text-sm leading-relaxed">
                       {faq.answer}
                     </div>
                   </div>

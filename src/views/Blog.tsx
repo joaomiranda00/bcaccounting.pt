@@ -57,56 +57,68 @@ const Blog = () => {
     {
       id: 1,
       title: 'Como Escolher um Contabilista para a Sua Empresa',
-      excerpt: 'Descubra os critérios essenciais para selecionar o parceiro contabilístico ideal para o seu negócio.',
+      excerpt: 'Critérios práticos para avaliar acompanhamento, proximidade, cumprimento e capacidade de leitura financeira no apoio à empresa.',
       category: 'Contabilidade',
       date: '15 Jan 2025',
       readTime: '5 min',
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop',
+      supportPage: '/servicos/contabilidade',
+      supportLabel: 'Serviços de Contabilidade',
     },
     {
       id: 2,
       title: 'O Que uma Empresa Deve Preparar para uma Candidatura a Fundos Europeus',
-      excerpt: 'Guia prático com os documentos e informações necessárias para uma candidatura bem-sucedida.',
+      excerpt: 'Guia introdutório sobre informação, enquadramento e documentação útil antes de avançar para uma candidatura.',
       category: 'Incentivos',
       date: '10 Jan 2025',
       readTime: '7 min',
       image: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=600&h=400&fit=crop',
+      supportPage: '/servicos/incentivos-ao-investimento',
+      supportLabel: 'Incentivos ao Investimento',
     },
     {
       id: 3,
       title: 'Diferença Entre Contabilidade e Consultoria de Gestão',
-      excerpt: 'Entenda as distinções entre estes dois serviços complementares e como podem beneficiar a sua empresa.',
+      excerpt: 'Explicação simples sobre quando a empresa precisa de cumprimento contabilístico e quando precisa de apoio à decisão e controlo.',
       category: 'Gestão',
       date: '5 Jan 2025',
       readTime: '4 min',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
+      supportPage: '/servicos/consultoria-de-gestao',
+      supportLabel: 'Consultoria de Gestão',
     },
     {
       id: 4,
       title: 'Erros Fiscais Mais Comuns nas PME',
-      excerpt: 'Conheça os erros mais frequentes e aprenda como evitá-los para não ter problemas com as finanças.',
+      excerpt: 'Sinais de risco fiscal frequentes nas PME e formas de reduzir exposição através de acompanhamento adequado.',
       category: 'Fiscalidade',
       date: '28 Dez 2024',
       readTime: '6 min',
       image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop',
+      supportPage: '/servicos/consultoria-fiscal',
+      supportLabel: 'Consultoria Fiscal',
     },
     {
       id: 5,
       title: 'Como Saber Se a Sua Empresa Pode Beneficiar de Incentivos ao Investimento',
-      excerpt: 'Critérios de elegibilidade e setores prioritários para os principais programas de incentivos.',
+      excerpt: 'Perguntas de enquadramento inicial para perceber se o projeto, a empresa e o investimento justificam avançar.',
       category: 'Incentivos',
       date: '20 Dez 2024',
       readTime: '5 min',
       image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=400&fit=crop',
+      supportPage: '/servicos/incentivos-ao-investimento',
+      supportLabel: 'Incentivos ao Investimento',
     },
     {
       id: 6,
       title: 'Guia Prático do IVA para Empresas',
-      excerpt: 'Tudo o que precisa de saber sobre o Imposto sobre o Valor Acrescentado no exercício da sua atividade.',
+      excerpt: 'Resumo introdutório para empresas que precisam de compreender obrigações, prazos e impacto do IVA na operação.',
       category: 'Fiscalidade',
       date: '15 Dez 2024',
       readTime: '8 min',
       image: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&h=400&fit=crop',
+      supportPage: '/servicos/consultoria-fiscal',
+      supportLabel: 'Consultoria Fiscal',
     },
   ];
 
@@ -129,8 +141,9 @@ const Blog = () => {
               Blog <span className="text-[#C1272D]">BCA</span>
             </h1>
             <p className="text-xl text-[#666] leading-relaxed">
-              Artigos, notícias e insights sobre contabilidade, fiscalidade, 
-              gestão e incentivos ao investimento.
+              Este espaço reúne temas editoriais ligados à contabilidade,
+              fiscalidade, gestão e incentivos ao investimento, pensados para
+              apoiar empresas em fase de decisão e esclarecimento.
             </p>
           </div>
         </div>
@@ -154,6 +167,33 @@ const Blog = () => {
                 {category}
               </button>
             ))}
+          </div>
+
+          <div className="max-w-4xl mx-auto mb-12 rounded-2xl border border-[#E0E0E0] bg-[#F9F9F9] p-6 text-center">
+            <h2 className="text-2xl font-bold text-[#333] mb-3">Hub editorial em evolução</h2>
+            <p className="text-[#666] leading-relaxed mb-4">
+              A listagem atual funciona como base editorial para os clusters
+              estratégicos da BCA. Enquanto as páginas individuais de artigo não
+              estão publicadas, use estes temas para explorar os serviços
+              relacionados e perceber onde cada conteúdo se enquadra.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3 text-sm">
+              <Link href="/servicos/contabilidade" className="text-[#C1272D] hover:underline">
+                Contabilidade
+              </Link>
+              <Link href="/servicos/consultoria-fiscal" className="text-[#C1272D] hover:underline">
+                Consultoria Fiscal
+              </Link>
+              <Link href="/servicos/consultoria-de-gestao" className="text-[#C1272D] hover:underline">
+                Consultoria de Gestão
+              </Link>
+              <Link href="/servicos/incentivos-ao-investimento" className="text-[#C1272D] hover:underline">
+                Incentivos ao Investimento
+              </Link>
+              <Link href="/contactos" className="text-[#C1272D] hover:underline">
+                Contactos
+              </Link>
+            </div>
           </div>
 
           {/* Blog Grid */}
@@ -192,21 +232,24 @@ const Blog = () => {
                   <p className="text-[#666] text-sm leading-relaxed mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
-                  <button className="inline-flex items-center text-[#C1272D] text-sm font-medium">
-                    Ler mais
+                  <p className="text-xs text-[#666] mb-4">
+                    Artigo completo em preparação.
+                  </p>
+                  <Link
+                    href={post.supportPage}
+                    className="inline-flex items-center text-[#C1272D] text-sm font-medium"
+                  >
+                    Ver serviço relacionado: {post.supportLabel}
                     <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2" />
-                  </button>
+                  </Link>
                 </div>
               </article>
             ))}
           </div>
 
-          {/* Load More */}
-          <div className="text-center mt-12">
-            <button className="btn-secondary">
-              Carregar Mais Artigos
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </button>
+          <div className="text-center mt-12 text-sm text-[#666]">
+            A arquitetura de artigos individuais continua por implementar e fica
+            documentada para a fase editorial seguinte.
           </div>
         </div>
       </section>
