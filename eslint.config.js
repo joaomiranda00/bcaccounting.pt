@@ -1,24 +1,13 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import tseslint from 'typescript-eslint'
+import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { FlatCompat } from '@eslint/eslintrc'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+const compat = new FlatCompat({ baseDirectory: __dirname })
+
 export default defineConfig([
-  globalIgnores(['.next', 'dist', 'next-env.d.ts']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs.flat.recommended,
-    ],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
-    },
-  },
+  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  globalIgnores(['.next/**', 'build/**', 'dist/**', 'out/**', 'next-env.d.ts']),
 ])
