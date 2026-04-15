@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import JsonLd from '@/components/seo/JsonLd';
 import { SITE_NAME, SITE_URL } from '@/lib/seo';
 import { getAccountingServiceSchema } from '@/lib/structured-data';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import '../index.css';
 
 export const metadata: Metadata = {
@@ -44,6 +45,7 @@ export default function RootLayout({
   return (
     <html lang="pt-PT">
       <body>
+         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
         <JsonLd data={getAccountingServiceSchema()} />
         <div className="min-h-screen flex flex-col">
           <Header />
