@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -378,9 +379,12 @@ const AboutSection = () => {
           {/* Image & Stats */}
           <div className="relative">
             <div className="about-image relative rounded-2xl overflow-hidden shadow-2xl">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop"
                 alt="Escritório BCA"
+                width={800}
+                height={600}
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#333]/50 to-transparent" />

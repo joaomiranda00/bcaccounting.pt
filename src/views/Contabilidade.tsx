@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   Calculator,
@@ -206,9 +207,12 @@ const Contabilidade = () => {
               </div>
               <div className="relative">
                 <div className="rounded-2xl overflow-hidden shadow-xl">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=600&fit=crop"
                     alt="Serviços de Contabilidade"
+                    width={800}
+                    height={600}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-auto object-cover"
                   />
                 </div>
@@ -223,9 +227,12 @@ const Contabilidade = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="order-2 lg:order-1 relative">
                 <div className="rounded-2xl overflow-hidden shadow-xl">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
                     alt="Empresas Acompanhadas"
+                    width={800}
+                    height={600}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-auto object-cover"
                   />
                 </div>

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   Lightbulb,
@@ -210,9 +211,12 @@ const ConsultoriaGestao = () => {
               </div>
               <div className="relative">
                 <div className="rounded-2xl overflow-hidden shadow-xl">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop"
                     alt="Consultoria de Gestão"
+                    width={800}
+                    height={600}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-auto object-cover"
                   />
                 </div>
@@ -227,9 +231,12 @@ const ConsultoriaGestao = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="order-2 lg:order-1 relative">
                 <div className="rounded-2xl overflow-hidden shadow-xl">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?w=800&h=600&fit=crop"
                     alt="Planeamento Estratégico"
+                    width={800}
+                    height={600}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
                     className="w-full h-auto object-cover"
                   />
                 </div>
